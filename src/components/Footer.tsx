@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, MapPin, Phone, Youtube } from "lucide-react";
+import ExplorersLogo from "@/components/ExplorersLogo";
 
 const quickLinks = [
   ["Home", "/"],
@@ -67,7 +68,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-10 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,2fr)]">
           <div className="space-y-6">
             <div>
-              <h3 className="mb-2 font-heading text-3xl font-extrabold">EXPLORERS</h3>
+              <ExplorersLogo className="mb-2 h-16 w-64 text-foreground" />
               <p className="mb-4 text-sm font-semibold text-foreground/75">Since 2001 - The Name of Excellence</p>
               <p className="text-sm leading-relaxed text-foreground/80">
                 Trusted by lakhs of explorers for safe treks, camps, tours, school programs, corporate events and customised travel.
@@ -139,7 +140,7 @@ const Footer = () => {
 
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-foreground/20 pt-8 md:flex-row">
           <p className="text-sm text-foreground/65">
-            Â© {new Date().getFullYear()} Explorers Treks & Tours. All rights reserved.
+            © {new Date().getFullYear()} Explorers Treks & Tours. All rights reserved.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {socialLinks.map(([label, href, Icon]) => (
@@ -162,3 +163,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

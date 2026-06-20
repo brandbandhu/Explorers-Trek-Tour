@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Menu, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { programDirectory } from "@/data/siteData";
+import ExplorersLogo from "@/components/ExplorersLogo";
 import {
   Sheet,
   SheetContent,
@@ -67,13 +68,8 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4 md:h-20">
-        <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="font-heading text-lg font-extrabold tracking-tight sm:text-xl md:text-2xl">
-            <span className={scrolled ? "text-primary" : "text-foreground drop-shadow-sm"}>EXPLORERS</span>
-          </span>
-          <span className={`hidden max-w-40 truncate text-xs font-body sm:block ${scrolled ? "text-muted-foreground" : "text-foreground/70 drop-shadow-sm"}`}>
-            The Name of Excellence Since 2001
-          </span>
+        <Link to="/" className="flex min-w-0 items-center">
+          <ExplorersLogo className="h-12 w-44 text-foreground drop-shadow-sm sm:h-14 sm:w-56 md:h-16 md:w-64" />
         </Link>
 
         <div className="hidden xl:flex flex-1 justify-center px-4">
