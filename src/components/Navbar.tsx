@@ -102,9 +102,7 @@ const Navbar = () => {
         <Sheet>
           <SheetTrigger asChild>
             <button
-              className={`p-2 rounded-lg border border-border/60 bg-card/80 hover:bg-card transition-colors ${
-                scrolled ? "text-foreground" : "text-primary-foreground"
-              }`}
+              className="rounded-lg border border-border/70 bg-card/90 p-2 text-foreground shadow-sm transition-colors hover:bg-card xl:hidden"
               aria-label="Open menu"
             >
               <Menu className="w-6 h-6" />
