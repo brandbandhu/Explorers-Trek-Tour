@@ -7,13 +7,13 @@ import heroKids from "@/assets/hero-kids.jpg";
 const AtlasPage = () => {
   return (
     <Layout>
-      <div className="relative h-[50vh] min-h-[350px]">
+      <div className="relative min-h-[320px] md:h-[50vh] md:min-h-[350px]">
         <img src={heroKids} alt="ATLAS Academy" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-black/30" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="px-4 text-center">
-            <h1 className="mb-4 font-heading text-3xl font-extrabold text-primary-foreground sm:text-4xl md:text-6xl">ATLAS Academy</h1>
-            <p className="text-primary-foreground/80 font-body text-lg max-w-xl mx-auto">
+            <h1 className="mb-4 font-heading text-3xl font-extrabold text-primary-foreground sm:text-4xl md:text-5xl">ATLAS Academy</h1>
+            <p className="mx-auto max-w-xl font-body text-base text-primary-foreground/80 md:text-lg">
               Adventure Training for Leadership, Adventure & Survival
             </p>
           </div>
@@ -30,7 +30,7 @@ const AtlasPage = () => {
               resilience, teamwork, decision-making, and leadership skills that translate into every
               aspect of life.
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="mb-8 grid grid-cols-1 gap-5 md:grid-cols-2 md:gap-6">
               {[
                 { title: "Mountaineering", desc: "Learn basic to advanced mountaineering skills from certified instructors." },
                 { title: "Survival Skills", desc: "Navigation, shelter building, fire craft, and wilderness first aid." },
@@ -44,7 +44,7 @@ const AtlasPage = () => {
               ))}
             </div>
             <Link to="/contact">
-              <Button size="lg" className="rounded-full px-8 font-heading font-bold text-highlight-foreground gradient-highlight sm:px-10">
+              <Button size="lg" className="w-full rounded-lg px-8 font-heading font-bold text-highlight-foreground gradient-highlight sm:w-auto sm:px-10">
                 Enroll Now
               </Button>
             </Link>

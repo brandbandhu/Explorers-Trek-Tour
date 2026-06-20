@@ -46,9 +46,8 @@ const TrustSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="text-center p-6 rounded-2xl bg-primary-foreground/10 backdrop-blur-sm"
+              className="rounded-lg bg-primary-foreground/10 p-6 text-center backdrop-blur-sm"
             >
-              <span className="text-4xl mb-3 block">{stat.icon}</span>
               <div className="font-heading text-4xl md:text-5xl font-extrabold text-primary-foreground mb-2">
                 {stat.number}
               </div>

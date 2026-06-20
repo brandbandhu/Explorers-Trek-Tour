@@ -12,11 +12,11 @@ const LoginPage = () => {
 
   return (
     <Layout>
-      <div className="pt-24">
-        <div className="container mx-auto px-4 py-12">
+      <div>
+        <div className="container mx-auto px-4 py-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
             <div className="lg:col-span-6 hidden lg:block">
-              <div className="relative h-full min-h-[520px] rounded-3xl overflow-hidden border border-border card-shadow">
+              <div className="relative h-full min-h-[520px] overflow-hidden rounded-lg border border-border card-shadow">
                 <img src={heroMountains} alt="Mountain trek" className="absolute inset-0 h-full w-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-6 left-6 right-6 text-white">
@@ -54,7 +54,7 @@ const LoginPage = () => {
                         <button className="text-xs font-semibold text-primary hover:underline">Forgot Password?</button>
                       </div>
                     </div>
-                    <Button className="w-full gradient-highlight text-highlight-foreground font-heading font-bold rounded-xl py-6 text-base">
+                    <Button className="w-full rounded-lg gradient-highlight py-6 font-heading text-base font-bold text-highlight-foreground">
                       Login
                     </Button>
                     <div className="flex items-center gap-3 text-xs text-muted-foreground">
@@ -63,8 +63,8 @@ const LoginPage = () => {
                       <span className="h-px flex-1 bg-border" />
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      <Button variant="outline" className="rounded-xl">Sign in with Google</Button>
-                      <Button variant="outline" className="rounded-xl">Continue with Mobile</Button>
+                      <Button variant="outline" className="rounded-lg">Sign in with Google</Button>
+                      <Button variant="outline" className="rounded-lg">Continue with Mobile</Button>
                     </div>
                   </div>
                 ) : (
@@ -78,7 +78,7 @@ const LoginPage = () => {
                     <Input type="email" placeholder="Email" className="bg-background" />
                     <Input type="password" placeholder="Password" className="bg-background" />
                     <Input type="password" placeholder="Confirm Password" className="bg-background" />
-                    <Button className="w-full gradient-highlight text-highlight-foreground font-heading font-bold rounded-xl py-6 text-base">
+                    <Button className="w-full rounded-lg gradient-highlight py-6 font-heading text-base font-bold text-highlight-foreground">
                       Create Account
                     </Button>
                   </div>

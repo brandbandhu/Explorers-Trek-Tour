@@ -12,6 +12,7 @@ import AtlasPage from "./pages/AtlasPage";
 import ProgramPage from "./pages/ProgramPage";
 import NotFound from "./pages/NotFound";
 import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
@@ -33,6 +34,7 @@ const App = () => (
           <Route path="/programs" element={<Navigate to="/programs/junior-explorers" replace />} />
           <Route path="/programs/:programId" element={<ProgramPage />} />
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/admin" element={<AdminPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

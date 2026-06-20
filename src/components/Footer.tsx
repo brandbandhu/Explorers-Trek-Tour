@@ -1,6 +1,21 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, MapPin, Phone, Youtube } from "lucide-react";
 
+const quickLinks = [
+  ["Home", "/"],
+  ["About Us", "/about"],
+  ["Treks", "/treks"],
+  ["Tours", "/programs/group-tours"],
+  ["Speciality Tours", "/programs/lady-explorers"],
+  ["Camping", "/treks?type=Camping"],
+  ["Atlas", "/atlas"],
+  ["Contact", "/contact"],
+  ["Mountain Run", "/programs/mountain-run"],
+  ["School Tours", "/programs/school-tours"],
+  ["Corporate Tours", "/programs/corporate-tours"],
+  ["Customised Tour Packages", "/programs/customised-packages"],
+];
+
 const footerGroups = [
   {
     title: "Useful Links",
@@ -10,66 +25,33 @@ const footerGroups = [
       ["Rules During Event", "/contact"],
       ["Discount Policy", "/contact"],
       ["Privacy Policy", "/contact"],
-      ["Rules & Regulations", "/contact"],
-      ["FAQ", "/#faq"],
       ["Work With Us", "/contact"],
       ["Career Opportunities", "/contact"],
       ["Why Explorers", "/about"],
-      ["Fitness", "/programs/mountain-run"],
-      ["Blog", "/"],
     ],
   },
   {
     title: "Speciality",
     links: [
       ["Upcoming Events", "/treks"],
-      ["Treks", "/treks"],
-      ["Camping", "/treks?type=Camping"],
-      ["Summer Camps", "/programs/junior-explorers"],
-      ["Children Camps", "/programs/junior-explorers"],
+      ["Junior Explorers", "/programs/junior-explorers"],
+      ["Lady Explorers", "/programs/lady-explorers"],
+      ["Silver Explorers", "/programs/silver-explorers"],
       ["Jungle Safari", "/programs/wildlife-tours"],
-      ["Himalayan Treks", "/programs/himalayan-explorers"],
-      ["Kokan Tours", "/programs/customised-packages"],
-      ["Treks & Tours for 40+", "/programs/silver-explorers"],
-      ["Women Special", "/programs/lady-explorers"],
-      ["Bike Safari", "/programs/on-wheels"],
-      ["Marathon", "/programs/mountain-run"],
+      ["ATLAS Academy", "/atlas"],
     ],
   },
   {
     title: "We Also Offer",
     links: [
-      ["Leaders Training Programme", "/atlas"],
       ["School & Educational Tours", "/programs/school-tours"],
       ["Corporate / Team Building Tours", "/programs/corporate-tours"],
       ["Domestic Tours", "/programs/customised-packages"],
       ["International Tours", "/programs/customised-packages"],
-      ["Customised Tour Packages", "/programs/customised-packages"],
       ["Fix Departure Tours", "/programs/group-tours"],
-      ["Hotel Booking", "/contact"],
-      ["Villa & Resort Booking", "/contact"],
-      ["Cruise Booking", "/contact"],
       ["Membership", "/contact"],
-      ["Rental: Tent / Sack / Sleeping Bag", "/contact"],
     ],
   },
-];
-
-const quickLinks = [
-  ["Home", "/"],
-  ["About Us", "/about"],
-  ["Treks", "/treks"],
-  ["Camping", "/treks?type=Camping"],
-  ["Speciality Tours", "/programs/lady-explorers"],
-  ["Customised Tour Packages", "/programs/customised-packages"],
-  ["Group Tours", "/programs/group-tours"],
-  ["Offbeat Tours", "/programs/offbeat-tours"],
-  ["ATLAS Academy", "/atlas"],
-  ["Mountain Run", "/programs/mountain-run"],
-  ["School Tours", "/programs/school-tours"],
-  ["Corporate Tours", "/programs/corporate-tours"],
-  ["Contact Us", "/contact"],
-  ["FAQ", "/#faq"],
 ];
 
 const socialLinks = [
@@ -86,29 +68,24 @@ const Footer = () => {
           <div className="space-y-6">
             <div>
               <h3 className="mb-2 font-heading text-3xl font-extrabold">EXPLORERS</h3>
-              <p className="mb-4 text-sm font-semibold text-foreground/75">Treks, Tours and Training</p>
+              <p className="mb-4 text-sm font-semibold text-foreground/75">Since 2001 - The Name of Excellence</p>
               <p className="text-sm leading-relaxed text-foreground/80">
-                Since 2001 - The Name of Excellence. Trusted by lakhs of explorers for safe treks, camps, tours,
-                school programs, corporate events and customised travel.
+                Trusted by lakhs of explorers for safe treks, camps, tours, school programs, corporate events and customised travel.
               </p>
             </div>
 
             <div className="space-y-3 text-sm">
-              <a href="tel:+919850506622" className="flex items-start gap-2 text-foreground/80 hover:text-foreground">
+              <a href="tel:+919850502723" className="flex items-start gap-2 text-foreground/80 hover:text-foreground">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>Treks / Himalaya / Jungle Safari: 9850506622</span>
+                <span>Treks / Himalaya / Jungle Safari: 9850502723 | 9850506622</span>
               </a>
               <a href="tel:+919850504433" className="flex items-start gap-2 text-foreground/80 hover:text-foreground">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>Tours / Corporate / School: 9850504433</span>
-              </a>
-              <a href="tel:+919850502723" className="flex items-start gap-2 text-foreground/80 hover:text-foreground">
-                <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>Office: 9850502723</span>
+                <span>Tour Packages / Corporate / School: 9850504433 | 9850507733</span>
               </a>
               <a href="https://wa.me/919850504437" className="flex items-start gap-2 text-foreground/80 hover:text-foreground">
                 <Phone className="mt-0.5 h-4 w-4 shrink-0" />
-                <span>WhatsApp details only: 9850504437</span>
+                <span>WhatsApp: 9850504437</span>
               </a>
               <a
                 href="https://www.google.com/maps/search/?api=1&query=1692+Bhagyadarshan+Building+Shop+No+5+Sadashiv+Peth+Tilak+Road+Pune+411030"
@@ -118,6 +95,14 @@ const Footer = () => {
               >
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0" />
                 <span>1692, Bhagyadarshan Building, Shop No 5, Sadashiv Peth, Tilak Road, Pune 411030</span>
+              </a>
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=1692+Bhagyadarshan+Building+Shop+No+5+Sadashiv+Peth+Tilak+Road+Pune+411030"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex rounded-full bg-foreground/10 px-4 py-2 font-heading text-sm font-bold text-foreground transition-colors hover:bg-foreground/20"
+              >
+                Google Location
               </a>
             </div>
           </div>

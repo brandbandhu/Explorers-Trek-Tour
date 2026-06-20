@@ -3,6 +3,15 @@ import heroCamping from "@/assets/hero-camping.jpg";
 import heroKids from "@/assets/hero-kids.jpg";
 import heroWomen from "@/assets/hero-women.jpg";
 
+export type TourType = "Weekend Trek" | "Himalayan Trek" | "Camping" | "Tour" | "Wildlife Tour" | "Speciality Tour";
+
+export interface Batch {
+  label: string;
+  date: string;
+  price: number;
+  seats?: string;
+}
+
 export interface Trek {
   id: string;
   title: string;
@@ -14,6 +23,8 @@ export interface Trek {
   price: number;
   originalPrice?: number;
   image: string;
+  tag: string;
+  reporting: string;
   description: string;
   overview: string;
   highlights: string[];
@@ -21,41 +32,298 @@ export interface Trek {
   includes: string[];
   excludes: string[];
   month: string[];
-  tourType: "Weekend Trek" | "Himalayan Trek" | "Night Trek" | "Camping" | "Tour";
+  tourType: TourType;
   gallery: string[];
+  batches: Batch[];
   featured?: boolean;
 }
 
+export const brand = {
+  name: "Explorers",
+  fullName: "Explorers Treks & Tours",
+  tagline: "The Name of Excellence Since 2001",
+  logoText: "EXPLORERS",
+  whatsapp: "9850504437",
+  address: "1692, Bhagyadarshan Building, Shop No 5, Sadashiv Peth, Tilak Road, Pune 411030",
+};
+
 export const heroSlides = [
+  { image: heroMountains, title: "Weekend Treks", subtitle: "Guided Sahyadri escapes from Pune and Mumbai.", link: "/treks?type=Weekend+Trek" },
+  { image: heroKids, title: "Junior Explorers", subtitle: "Safe outdoor learning programs for young adventurers.", link: "/programs/junior-explorers" },
+  { image: heroWomen, title: "Lady Explorers", subtitle: "Women-only treks, camps, tours, and friendships.", link: "/programs/lady-explorers" },
+  { image: heroMountains, title: "Silver Explorers", subtitle: "Comfortable, carefully paced trips for 40+ explorers.", link: "/programs/silver-explorers" },
+  { image: heroCamping, title: "Camping", subtitle: "Lake, forest, and mountain stays under open skies.", link: "/treks?type=Camping" },
+  { image: heroWomen, title: "Himalayan Treks", subtitle: "High-altitude journeys led by trained teams.", link: "/treks?type=Himalayan+Trek" },
+  { image: heroCamping, title: "Customise Your Tour", subtitle: "Private domestic, international, school, and corporate plans.", link: "/programs/customised-packages" },
+  { image: heroKids, title: "Atlas", subtitle: "Adventure leadership training academy by Explorers.", link: "/atlas" },
+  { image: heroMountains, title: "Jungle Safari", subtitle: "Wildlife tours across India's iconic national parks.", link: "/programs/wildlife-tours" },
+];
+
+export const globalSchedule = [
+  { date: "01 June 2026", title: "Andharban", type: "Weekend Trek", month: "June", year: "2026" },
+  { date: "10 June 2026", title: "Devkund Waterfall", type: "Weekend Trek", month: "June", year: "2026" },
+  { date: "15 July 2026", title: "Madheghat Waterfall Rappelling", type: "Weekend Trek", month: "July", year: "2026" },
+  { date: "25 August 2026", title: "Pavna Camping", type: "Camping", month: "August", year: "2026" },
+  { date: "12 September 2026", title: "Lady Explorers Monsoon Special", type: "Speciality Tour", month: "September", year: "2026" },
+  { date: "18 October 2026", title: "Himalayan Base Camp Briefing", type: "Himalayan Trek", month: "October", year: "2026" },
+  { date: "01 January 2027", title: "Silver Explorers New Year Trail", type: "Speciality Tour", month: "January", year: "2027" },
+];
+
+export const trustStats = [
+  { number: "24+", label: "Years Experience", note: "Since 2001", icon: "24+" },
+  { number: "Certified", label: "Maharashtra Tourism", note: "Recognised operator", icon: "MT" },
+  { number: "100%", label: "Safety Record", note: "Trained leaders", icon: "100" },
+  { number: "4.7", label: "Google Rating", note: "5-star reviews", icon: "4.7" },
+  { number: "5000+", label: "Treks Completed", note: "Across India", icon: "5K" },
+];
+
+export const treks: Trek[] = [
   {
+    id: "andharban",
+    title: "Andharban",
+    location: "Bhira, Maharashtra",
+    duration: "1 Day",
+    difficulty: "Moderate",
+    endurance: "Medium",
+    ageGroup: "12-60",
+    price: 1499,
     image: heroMountains,
-    title: "Conquer the Himalayas",
-    subtitle: "Experience breathtaking treks through the world's highest peaks",
+    tag: "Trending",
+    reporting: "Pune to Pune",
+    description: "A misty forest descent through the famous dark forest route near Bhira.",
+    overview: "Andharban is one of the most loved weekend treks near Pune-Mumbai, ideal for monsoon treks near Pune, guided treks Pune, and beginner trekking routes with a professional team. Explorers Group offers professionally guided Treks in Sahyadri, covering one-day and multi-day trekking experiences across summer, monsoon and winter seasons.",
+    highlights: ["Dense Sahyadri forest trail", "Waterfalls and valley views", "Professional trek leader", "Great monsoon photography", "Beginner-friendly pacing"],
+    itinerary: [{ day: 1, title: "Pune to Bhira and forest trek", description: "Early pickup from Pune, breakfast en route, guided Andharban trail walk, lunch, descent, and return by late evening." }],
+    includes: ["Transport from Pune", "Breakfast and lunch", "Trek leader", "First aid", "Basic expertise charges"],
+    excludes: ["Personal expenses", "Insurance", "Anything not mentioned in includes"],
+    month: ["Jun", "Jul", "Aug", "Sep"],
+    tourType: "Weekend Trek",
+    gallery: [heroMountains, heroWomen, heroCamping],
+    batches: [
+      { label: "Batch 1", date: "01 June 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 2", date: "10 June 2026", price: 1499, seats: "Open" },
+      { label: "Batch 3", date: "15 July 2026", price: 1499, seats: "8 seats left" },
+      { label: "Batch 4", date: "25 August 2026", price: 1499, seats: "Open" },
+      { label: "Batch 5", date: "01 January 2027", price: 1499, seats: "Open" },
+    ],
+    featured: true,
   },
   {
+    id: "devkund-waterfall",
+    title: "Devkund Waterfall",
+    location: "Bhira, Maharashtra",
+    duration: "1 Day",
+    difficulty: "Easy",
+    endurance: "Low",
+    ageGroup: "10-60",
+    price: 1499,
     image: heroCamping,
-    title: "Camp Under the Stars",
-    subtitle: "Premium camping experiences in the heart of nature",
+    tag: "Must Do",
+    reporting: "Pune to Pune",
+    description: "A classic waterfall trail to the turquoise plunge pool of Devkund.",
+    overview: "Devkund is a popular one day trek near Pune and Mumbai, perfect for guided treks Pune, weekend treks near Pune, and monsoon treks near Pune with safety-focused leaders.",
+    highlights: ["Waterfall trail", "Forest walk", "Safe group management", "Ideal for first-time trekkers", "Scenic Bhira backwaters"],
+    itinerary: [{ day: 1, title: "Waterfall trail", description: "Pickup, breakfast, forest walk to Devkund, lunch, return trek, evening drop." }],
+    includes: ["Transport from Pune", "Meals as per plan", "Guide", "First aid"],
+    excludes: ["Changing room charges", "Personal expenses", "Insurance"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct"],
+    tourType: "Weekend Trek",
+    gallery: [heroCamping, heroMountains, heroKids],
+    batches: [
+      { label: "Batch 1", date: "01 June 2026", price: 1499 },
+      { label: "Batch 2", date: "10 June 2026", price: 1499 },
+      { label: "Batch 3", date: "15 July 2026", price: 1499 },
+      { label: "Batch 4", date: "25 August 2026", price: 1499 },
+      { label: "Batch 5", date: "01 January 2027", price: 1499 },
+    ],
+    featured: true,
   },
   {
-    image: heroKids,
-    title: "Junior Explorers",
-    subtitle: "Adventure programs designed for young trailblazers",
-  },
-  {
+    id: "madheghat-rappelling",
+    title: "Madheghat Waterfall Rappelling",
+    location: "Kelad, Maharashtra",
+    duration: "1 Day",
+    difficulty: "Difficult",
+    endurance: "High",
+    ageGroup: "16-50",
+    price: 800,
     image: heroWomen,
-    title: "Lady Explorers",
-    subtitle: "Empowering women through mountain adventures",
+    tag: "Adventure Special",
+    reporting: "Direct Reporting",
+    description: "A high-adrenaline waterfall rappelling event in the Sahyadri.",
+    overview: "Madheghat is built for adventure lovers looking for offbeat treks Maharashtra, fort treks near Pune/Mumbai, and a professionally managed technical activity.",
+    highlights: ["Waterfall rappelling", "Technical safety briefing", "Helmet and harness support", "Experienced activity team", "Raw mountain setting"],
+    itinerary: [{ day: 1, title: "Rappelling activity", description: "Report at Kelad, safety briefing, activity rotation, lunch break, certificate photo, and dispersal." }],
+    includes: ["Activity gear", "Technical experts", "Basic first aid", "Activity charges"],
+    excludes: ["Travel", "Meals", "Personal expenses"],
+    month: ["Jul", "Aug", "Sep"],
+    tourType: "Weekend Trek",
+    gallery: [heroWomen, heroMountains, heroCamping],
+    batches: [
+      { label: "Batch 1", date: "01 June 2026", price: 800 },
+      { label: "Batch 2", date: "10 June 2026", price: 800 },
+      { label: "Batch 3", date: "15 July 2026", price: 800 },
+      { label: "Batch 4", date: "25 August 2026", price: 800 },
+      { label: "Batch 5", date: "01 January 2027", price: 800 },
+    ],
+    featured: true,
+  },
+  {
+    id: "pavna-lake-camping",
+    title: "Pavna Lake Camping",
+    location: "Pavna, Maharashtra",
+    duration: "1 Night",
+    difficulty: "Easy",
+    endurance: "Low",
+    ageGroup: "5-70",
+    price: 1299,
+    image: heroCamping,
+    tag: "Popular",
+    reporting: "Direct Reporting",
+    description: "Lakeside camping with tents, food, bonfire, and morning views.",
+    overview: "A comfortable camping experience for families, school groups, and private groups near Pune.",
+    highlights: ["Lakeside tents", "Bonfire evening", "Dinner and breakfast", "Family-friendly", "Customisable group dates"],
+    itinerary: [{ day: 1, title: "Camp check-in", description: "Evening check-in, games, BBQ-style dinner, bonfire, tent stay, breakfast, and checkout." }],
+    includes: ["Tent stay", "Dinner", "Breakfast", "Bonfire", "Camp coordinator"],
+    excludes: ["Travel", "Extra activities", "Personal purchases"],
+    month: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
+    tourType: "Camping",
+    gallery: [heroCamping, heroKids, heroMountains],
+    batches: [
+      { label: "Batch 1", date: "25 August 2026", price: 1299 },
+      { label: "Batch 2", date: "12 September 2026", price: 1299 },
+      { label: "Batch 3", date: "01 January 2027", price: 1299 },
+    ],
+    featured: true,
+  },
+  {
+    id: "kedarkantha",
+    title: "Kedarkantha Trek",
+    location: "Uttarakhand, Himalaya",
+    duration: "6 Days",
+    difficulty: "Moderate",
+    endurance: "High",
+    ageGroup: "14-55",
+    price: 8999,
+    originalPrice: 10999,
+    image: heroMountains,
+    tag: "Offbeat",
+    reporting: "Dehradun to Dehradun",
+    description: "A snow-season Himalayan summit trek with forest trails and wide mountain views.",
+    overview: "A classic winter trek Maharashtra travellers love when graduating from Sahyadri treks Pune to guided Himalayan treks.",
+    highlights: ["Snow summit", "Pine forests", "Camping experience", "Certified trek team", "High-altitude preparation"],
+    itinerary: [
+      { day: 1, title: "Dehradun to Sankri", description: "Drive to Sankri and briefing." },
+      { day: 2, title: "Sankri to Juda Ka Talab", description: "Forest trek and campsite." },
+      { day: 3, title: "Base camp", description: "Trek to Kedarkantha base." },
+      { day: 4, title: "Summit day", description: "Early summit push and descent." },
+      { day: 5, title: "Return to Sankri", description: "Descend and celebration dinner." },
+      { day: 6, title: "Sankri to Dehradun", description: "Drive back." },
+    ],
+    includes: ["Meals on trek", "Camping equipment", "Trek leaders", "Forest permissions", "First aid"],
+    excludes: ["Travel to Dehradun", "Personal gear", "Insurance", "Porter charges"],
+    month: ["Dec", "Jan", "Feb", "Mar"],
+    tourType: "Himalayan Trek",
+    gallery: [heroMountains, heroWomen, heroCamping],
+    batches: [
+      { label: "Batch 1", date: "18 October 2026", price: 8999 },
+      { label: "Batch 2", date: "01 January 2027", price: 8999 },
+    ],
+    featured: true,
   },
 ];
 
-export const categories = [
-  { name: "Weekend Treks", icon: "⛰️", link: "/treks?type=Weekend+Trek" },
-  { name: "Junior Explorers", icon: "🧒", link: "/programs/junior-explorers" },
-  { name: "Lady Explorers", icon: "👩", link: "/programs/lady-explorers" },
-  { name: "Silver Trails", icon: "🏔️", link: "/programs/silver-trails" },
-  { name: "On Wheels", icon: "🚗", link: "/programs/on-wheels" },
-  { name: "Mountain Run", icon: "🏃", link: "/programs/mountain-run" },
+export const experienceCategories = [
+  "Weekend Treks",
+  "Junior Explorers",
+  "Lady Explorers",
+  "Silver Explorers",
+  "Explorers on Wheels",
+  "Camping",
+  "Jungle Safari",
+  "Himalayan Treks",
+  "School Tours",
+  "Corporate Tours",
+  "Fix Departure Tours",
+  "Customise Tour Packages",
+  "Tours Out of Maharashtra",
+  "Offbeat Tours",
+  "Mountain Run",
+  "ATLAS Training Academy",
+  "Be A Part of Explorers",
+].map((name, index) => ({
+  name,
+  image: [heroMountains, heroKids, heroWomen, heroCamping][index % 4],
+  link: name.includes("ATLAS") ? "/atlas" : name.includes("Weekend") || name.includes("Himalayan") ? "/treks" : "/programs/customised-packages",
+}));
+
+export const awards = [
+  "Maharashtra Tourism",
+  "MSME",
+  "NIDHI",
+  "ETAA",
+  "TAAP",
+  "Bhartiya Paryatan Coop Society",
+  "ATAOI",
+  "TOI Award",
+  "Paryatan Committee",
+  "Innovative Tour Operator",
+  "IIHM",
+  "IHC London",
+];
+
+export const testimonials = [
+  "Professional team, clear communication, and superb safety management.",
+  "Our school tour was handled beautifully from pickup to drop.",
+  "Best trekking group in Maharashtra for beginners and regular trekkers.",
+  "The Lady Explorers batch felt safe, warm, and very well planned.",
+];
+
+export const pickupPoints = [
+  { name: "Explorers Office", map: "https://www.google.com/maps/search/?api=1&query=Explorers+Office+Sadashiv+Peth+Pune" },
+  { name: "Deccan", map: "https://www.google.com/maps/search/?api=1&query=Deccan+Pune" },
+  { name: "Sancheti Hospital", map: "https://www.google.com/maps/search/?api=1&query=Sancheti+Hospital+Pune" },
+  { name: "Nashik Phata", map: "https://www.google.com/maps/search/?api=1&query=Nashik+Phata+Pune" },
+  { name: "Moshi", map: "https://www.google.com/maps/search/?api=1&query=Moshi+Pune" },
+];
+
+export const offers = [
+  { name: "Early Bird", value: "Auto-applies for selected advance bookings" },
+  { name: "Group Discount", value: "Rs.500 for 4-8, Rs.1000 for 8-15" },
+  { name: "Membership Discount", value: "Lady and Silver Explorers voucher Rs.1000" },
+  { name: "Repeater Discount", value: "Rs.1000 cashback after 10 treks in a financial year" },
+];
+
+export const adminModules = [
+  "Hero sliders image/video",
+  "Event categories and cards",
+  "Seasonal tabs",
+  "Detail pages and batches",
+  "Prices and pickup points",
+  "Itinerary and includes/excludes",
+  "Offers and gallery",
+  "Awards logos and testimonials",
+  "Social links and calendar schedule",
+  "Enquiries, bookings, users, payments, and contact details",
+];
+
+export const programDirectory = [
+  { title: "Junior Explorers", subtitle: "8-16 years adventure camps and outdoor learning", link: "/programs/junior-explorers" },
+  { title: "Lady Explorers", subtitle: "Women special treks, camps and tours", link: "/programs/lady-explorers" },
+  { title: "Silver Explorers", subtitle: "40+ years comfortable treks and tours", link: "/programs/silver-explorers" },
+  { title: "Explorers on Wheels", subtitle: "Bicycle, bike, caravan and road trips", link: "/programs/on-wheels" },
+  { title: "Camping", subtitle: "Pavna, Panshet, Madheghat and Malshej stays", link: "/treks?type=Camping" },
+  { title: "Jungle Safari", subtitle: "Forest safaris and wildlife learning tours", link: "/programs/wildlife-tours" },
+  { title: "Himalayan Explorers", subtitle: "Guided Himalayan treks and expeditions", link: "/programs/himalayan-explorers" },
+  { title: "School Tours", subtitle: "Safe educational trips and outdoor camps", link: "/programs/school-tours" },
+  { title: "Corporate Tours", subtitle: "Team outings, offsites and leadership programs", link: "/programs/corporate-tours" },
+  { title: "Group Tours", subtitle: "Fix departure domestic and international group tours", link: "/programs/group-tours" },
+  { title: "Fix Departure Tours", subtitle: "Scheduled tours with confirmed batches", link: "/programs/fix-departure-tours" },
+  { title: "Customised Packages", subtitle: "Domestic, international, honeymoon and private tours", link: "/programs/customised-packages" },
+  { title: "Tours Out of Maharashtra", subtitle: "Kokan, South India, North India and pilgrimage tours", link: "/programs/tours-out-of-maharashtra" },
+  { title: "Offbeat Tours", subtitle: "Hidden destinations and unusual travel experiences", link: "/programs/offbeat-tours" },
+  { title: "Mountain Run", subtitle: "Trail running and Explorers Mountain Run events", link: "/programs/mountain-run" },
+  { title: "ATLAS Training Academy", subtitle: "Become a part of Team Explorers", link: "/atlas" },
 ];
 
 export const tourCategoryFilters = [
@@ -69,351 +337,94 @@ export const tourCategoryFilters = [
   "One Day Trekking Plan",
 ];
 
-export const programDirectory = [
-  { title: "Junior Explorers", subtitle: "8 to 14 Years", link: "/programs/junior-explorers" },
-  { title: "Lady Explorers", subtitle: "Women special adventures", link: "/programs/lady-explorers" },
-  { title: "Silver Explorers", subtitle: "40+ Years", link: "/programs/silver-explorers" },
-  { title: "Camping", subtitle: "Outdoor stays and camp experiences", link: "/programs/camping" },
-  { title: "Explorers on Wheels", subtitle: "Bike Safari / Cycle Safari / Caravan Tours", link: "/programs/on-wheels" },
-  { title: "Himalayan Explorers", subtitle: "High-altitude treks and expeditions", link: "/programs/himalayan-explorers" },
-  { title: "Wildlife Tours", subtitle: "Jungle safari and nature tours", link: "/programs/wildlife-tours" },
-  { title: "School Tours", subtitle: "Educational outdoor learning", link: "/programs/school-tours" },
-  { title: "Corporate Tours", subtitle: "Team building and offsites", link: "/programs/corporate-tours" },
-  { title: "Explorers Mountain Run", subtitle: "EMR running events", link: "/programs/mountain-run" },
-  { title: "Customised Packages", subtitle: "Domestic and international plans", link: "/programs/customised-packages" },
-  { title: "Group Tours / Fix Departures", subtitle: "Mixed domestic and international departures", link: "/programs/group-tours" },
-  { title: "ATLAS Training Academy", subtitle: "Adventure leadership training", link: "/atlas" },
-  { title: "Offbeat Tours", subtitle: "Unusual destinations and rare routes", link: "/programs/offbeat-tours" },
-  { title: "Work With Explorers", subtitle: "Work with us / Career opportunities", link: "/contact" },
-];
-
-export const treks: Trek[] = [
-  {
-    id: "rajgad-fort",
-    title: "Rajgad Fort Trek",
-    location: "Sahyadri, Maharashtra",
-    duration: "1 Day",
-    difficulty: "Moderate",
-    endurance: "Medium",
-    ageGroup: "12-60",
-    price: 1499,
-    originalPrice: 1999,
-    image: heroMountains,
-    description: "Explore the majestic Rajgad Fort, the former capital of the Maratha Empire.",
-    overview: "Rajgad Fort, meaning 'King's Fort', served as the capital of the Maratha Empire under Chhatrapati Shivaji Maharaj for almost 26 years before the capital was shifted to Raigad Fort. Standing at 4,600 feet above sea level, this trek offers stunning views of the surrounding Sahyadri ranges.",
-    highlights: [
-      "Summit at 4,600 feet with 360° panoramic views",
-      "Explore Padmavati Machi and Sanjivani Machi",
-      "Historical Maratha architecture",
-      "Sunrise/Sunset views from the top",
-      "Expert guides with first-aid training",
-    ],
-    itinerary: [
-      { day: 1, title: "Base to Summit", description: "Arrive at Gunjavne base village by 6 AM. Begin the trek through the scenic forest trail. Reach Padmavati Machi by 9 AM. Explore Balekilla (citadel) and Sanjivani Machi. Descend by 4 PM." },
-    ],
-    includes: ["Expert trek leader", "First aid kit", "Breakfast & lunch", "Certificate"],
-    excludes: ["Transportation to base", "Personal expenses", "Travel insurance"],
-    month: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
-    tourType: "Weekend Trek",
-    gallery: [heroMountains, heroCamping],
-    featured: true,
+const programDetails: Record<string, { description: string; ageGroup: string }> = {
+  "junior-explorers": {
+    ageGroup: "8-16 years",
+    description: "Junior Explorers programs combine safety, outdoor discipline, nature education, games, trekking basics, camping skills, and confidence-building activities for children.",
   },
-  {
-    id: "kedarkantha",
-    title: "Kedarkantha Trek",
-    location: "Uttarakhand, Himalayas",
-    duration: "6 Days",
-    difficulty: "Moderate",
-    endurance: "Medium",
-    ageGroup: "14-55",
-    price: 8999,
-    originalPrice: 11999,
-    image: heroWomen,
-    description: "One of the best winter treks in India with stunning snow-covered peaks.",
-    overview: "Kedarkantha is a summit climb in the Govind Wildlife Sanctuary that offers a perfect blend of dense pine forests, pristine meadows, and a spectacular summit climb to 12,500 feet. The panoramic views from the top include Swargarohini, Bandarpoonch, and Kala Nag peaks.",
-    highlights: [
-      "Summit at 12,500 feet",
-      "Snow-covered trails in winter",
-      "Camp in beautiful alpine meadows",
-      "Views of Swargarohini and Bandarpoonch",
-      "Rich biodiversity of Govind Sanctuary",
-    ],
-    itinerary: [
-      { day: 1, title: "Dehradun to Sankri", description: "Drive from Dehradun to Sankri (8-9 hours). Settle in guesthouse. Briefing session." },
-      { day: 2, title: "Sankri to Juda Ka Talab", description: "Trek through oak and pine forests (4 km, 4-5 hours). Camp near the frozen lake." },
-      { day: 3, title: "Juda Ka Talab to Kedarkantha Base", description: "Trek through open meadows (3 km, 3-4 hours). Set up camp at base." },
-      { day: 4, title: "Summit Day & Descent to Hargaon", description: "Early morning summit push (3 km). 360° views from the top. Descend to Hargaon camp." },
-      { day: 5, title: "Hargaon to Sankri", description: "Descend back to Sankri (6 km, 4-5 hours). Celebration dinner." },
-      { day: 6, title: "Sankri to Dehradun", description: "Drive back to Dehradun. Trip ends by afternoon." },
-    ],
-    includes: ["All meals during trek", "Camping equipment", "Trek leader & guides", "Forest permits", "First aid & safety equipment"],
-    excludes: ["Travel to/from Dehradun", "Personal clothing & gear", "Travel insurance", "Tips"],
-    month: ["Dec", "Jan", "Feb", "Mar", "Apr"],
-    tourType: "Himalayan Trek",
-    gallery: [heroWomen, heroMountains],
-    featured: true,
+  "lady-explorers": {
+    ageGroup: "Women special",
+    description: "Lady Explorers offers women-only treks, tours, camping batches, monsoon outings, and curated travel experiences with trusted planning and comfortable group support.",
   },
-  {
-    id: "night-trek-lohagad",
-    title: "Night Trek to Lohagad",
-    location: "Lonavala, Maharashtra",
-    duration: "1 Night",
-    difficulty: "Easy",
-    endurance: "Low",
-    ageGroup: "10-65",
-    price: 999,
-    image: heroCamping,
-    description: "Experience the thrill of night trekking under the starlit sky.",
-    overview: "Lohagad, meaning 'Iron Fort', rises to 3,400 feet. This night trek offers a magical experience of walking through ancient trails under moonlight, with a stunning sunrise from the fort.",
-    highlights: [
-      "Moonlight trekking experience",
-      "Sunrise from Vinchukata point",
-      "Explore Lohagad Fort history",
-      "Stargazing opportunity",
-      "Suitable for beginners",
-    ],
-    itinerary: [
-      { day: 1, title: "Night Trek", description: "Gather at base by 11 PM. Begin night trek with headlamps. Reach the top by 2 AM. Rest and stargaze. Watch the sunrise at 6 AM. Descend by 9 AM." },
-    ],
-    includes: ["Expert guide", "Morning tea & snacks", "First aid", "Certificate"],
-    excludes: ["Transportation", "Dinner", "Personal gear"],
-    month: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"],
-    tourType: "Night Trek",
-    gallery: [heroCamping, heroMountains],
-    featured: true,
-  },
-  {
-    id: "valley-of-flowers",
-    title: "Valley of Flowers Trek",
-    location: "Uttarakhand, Himalayas",
-    duration: "7 Days",
-    difficulty: "Moderate",
-    endurance: "High",
-    ageGroup: "16-55",
-    price: 12999,
-    originalPrice: 15999,
-    image: heroKids,
-    description: "UNESCO World Heritage Site with over 600 species of flowering plants.",
-    overview: "The Valley of Flowers National Park is a UNESCO World Heritage Site nestled in the western Himalayas. This trek takes you through spectacular alpine meadows carpeted with hundreds of varieties of wildflowers.",
-    highlights: [
-      "UNESCO World Heritage Site",
-      "600+ species of flowering plants",
-      "Visit Hemkund Sahib",
-      "Stunning Himalayan vistas",
-      "Rich alpine biodiversity",
-    ],
-    itinerary: [
-      { day: 1, title: "Haridwar to Govindghat", description: "Drive from Haridwar to Govindghat (10 hours). Night stay." },
-      { day: 2, title: "Govindghat to Ghangaria", description: "Trek to Ghangaria (9 km, 5-6 hours)." },
-      { day: 3, title: "Valley of Flowers", description: "Explore the valley (8 km round trip). Photography and exploration." },
-      { day: 4, title: "Hemkund Sahib", description: "Trek to Hemkund Sahib (6 km, 5-6 hours). Return to Ghangaria." },
-      { day: 5, title: "Valley of Flowers Again", description: "Second visit to explore deeper parts of the valley." },
-      { day: 6, title: "Ghangaria to Govindghat", description: "Descend to Govindghat. Rest." },
-      { day: 7, title: "Govindghat to Haridwar", description: "Drive back to Haridwar." },
-    ],
-    includes: ["All meals", "Camping gear", "Trek guides", "Permits", "First aid"],
-    excludes: ["Travel to Haridwar", "Personal items", "Insurance", "Porter charges"],
-    month: ["Jul", "Aug", "Sep"],
-    tourType: "Himalayan Trek",
-    gallery: [heroKids, heroMountains],
-    featured: true,
-  },
-  {
-    id: "pawna-lake-camping",
-    title: "Pawna Lake Camping",
-    location: "Lonavala, Maharashtra",
-    duration: "1 Night",
-    difficulty: "Easy",
-    endurance: "Low",
-    ageGroup: "5-70",
-    price: 1299,
-    image: heroCamping,
-    description: "Lakeside camping with bonfire, BBQ, and stunning sunset views.",
-    overview: "Pawna Lake is a scenic lake surrounded by the Sahyadri mountains. This overnight camping experience includes lakeside tents, barbecue dinner, bonfire, music, and a beautiful sunrise over the lake.",
-    highlights: [
-      "Lakeside tent camping",
-      "BBQ dinner & bonfire",
-      "Sunrise over Pawna Lake",
-      "Perfect for families",
-      "Live music & activities",
-    ],
-    itinerary: [
-      { day: 1, title: "Evening Arrival to Morning", description: "Check-in by 4 PM. Evening tea. Watch sunset. BBQ dinner at 8 PM. Bonfire & music. Morning tea and breakfast. Check-out by 10 AM." },
-    ],
-    includes: ["Tent stay", "BBQ dinner", "Breakfast", "Bonfire", "Parking"],
-    excludes: ["Transportation", "Extra snacks", "Adventure activities"],
-    month: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
-    tourType: "Camping",
-    gallery: [heroCamping, heroWomen],
-    featured: true,
-  },
-  {
-    id: "hampta-pass",
-    title: "Hampta Pass Trek",
-    location: "Himachal Pradesh",
-    duration: "5 Days",
-    difficulty: "Difficult",
-    endurance: "High",
-    ageGroup: "16-50",
-    price: 9999,
-    originalPrice: 12999,
-    image: heroMountains,
-    description: "A dramatic crossover trek from lush Kullu valley to barren Spiti.",
-    overview: "Hampta Pass at 14,010 feet is one of the most dramatic crossover treks in the Himalayas. You go from the lush green Kullu valley to the arid, barren landscape of Lahaul-Spiti in just one day. The contrast is surreal.",
-    highlights: [
-      "Dramatic landscape change",
-      "Cross 14,010 ft Hampta Pass",
-      "Visit Chandratal Lake (optional)",
-      "Stunning meadows of Jwara",
-      "River crossings and glacial valleys",
-    ],
-    itinerary: [
-      { day: 1, title: "Manali to Jobra to Chika", description: "Drive to Jobra. Trek to Chika (3 km). Camp setup." },
-      { day: 2, title: "Chika to Balu Ka Ghera", description: "Trek through meadows (10 km, 5-6 hours)." },
-      { day: 3, title: "Balu Ka Ghera to Siagoru via Hampta Pass", description: "Summit day! Cross the pass. Dramatic landscape change." },
-      { day: 4, title: "Siagoru to Chatru", description: "Descend to Chatru (6 km). Drive to Chandratal (optional)." },
-      { day: 5, title: "Chatru to Manali", description: "Drive back to Manali via Rohtang." },
-    ],
-    includes: ["All meals", "Camping equipment", "Guides", "Permits", "First aid"],
-    excludes: ["Travel to Manali", "Chandratal visit", "Insurance"],
-    month: ["Jun", "Jul", "Aug", "Sep", "Oct"],
-    tourType: "Himalayan Trek",
-    gallery: [heroMountains, heroWomen],
-    featured: true,
-  },
-];
-
-export const trustStats = [
-  { number: "24+", label: "Years Experience", icon: "🏆" },
-  { number: "Lakhs", label: "Trusted Explorers", icon: "👥" },
-  { number: "1000+", label: "Treks Completed", icon: "⛰️" },
-  { number: "100%", label: "Safety Record", icon: "🛡️" },
-];
-
-export const specialPrograms = [
-  {
-    id: "junior-explorers",
-    title: "Junior Explorers",
-    description: "Adventure programs designed for children aged 8-15 with focus on nature education, team building, and outdoor skills.",
-    image: heroKids,
-    ageGroup: "8-15 years",
-  },
-  {
-    id: "lady-explorers",
-    title: "Lady Explorers",
-    description: "Women-only treks creating a safe space for adventure, bonding, and self-discovery in the mountains.",
-    image: heroWomen,
-    ageGroup: "18-60 years",
-  },
-  {
-    id: "silver-trails",
-    title: "Silver Trails",
-    description: "Gentle treks and nature walks designed for senior citizens who love the outdoors.",
-    image: heroMountains,
-    ageGroup: "50+ years",
-  },
-  {
-    id: "on-wheels",
-    title: "Explorers on Wheels",
-    description: "Road trips and self-drive expeditions to offbeat destinations across India.",
-    image: heroCamping,
-    ageGroup: "All ages",
-  },
-  {
-    id: "mountain-run",
-    title: "Mountain Run",
-    description: "Trail running events in the Sahyadri mountains for fitness enthusiasts.",
-    image: heroMountains,
-    ageGroup: "16-45 years",
-  },
-  {
-    id: "silver-explorers",
-    title: "Silver Explorers",
-    description: "Comfortable nature trails, cultural tours, and carefully paced outdoor experiences for 40+ explorers.",
-    image: heroMountains,
+  "silver-explorers": {
     ageGroup: "40+ years",
+    description: "Silver Explorers is designed for mature travellers who prefer comfortable pacing, thoughtful itineraries, reliable logistics, and nature-rich experiences.",
   },
-  {
-    id: "camping",
-    title: "Camping",
-    description: "Family-friendly camping, lakeside stays, night sky experiences, bonfire evenings, and outdoor learning camps.",
-    image: heroCamping,
-    ageGroup: "All ages",
+  "on-wheels": {
+    ageGroup: "All age groups",
+    description: "Explorers on Wheels brings together bicycle rides, bike expeditions, caravan routes, and scenic road journeys with curated halts and support planning.",
   },
-  {
-    id: "himalayan-explorers",
-    title: "Himalayan Explorers",
-    description: "Guided Himalayan treks, snow treks, high-altitude expeditions, and training-backed mountain programs.",
-    image: heroWomen,
+  "wildlife-tours": {
+    ageGroup: "Families and nature lovers",
+    description: "Explore Tadoba, Pench, Kanha, Bandhavgad, Ranthambore, Gir, Kaziranga and other wildlife destinations with safari planning and nature interpretation.",
+  },
+  "himalayan-explorers": {
     ageGroup: "14+ years",
+    description: "Himalayan Explorers includes guided treks across Himachal, Uttarakhand, Jammu & Kashmir and Nepal, with preparation guidance and trained trek leadership.",
   },
-  {
-    id: "wildlife-tours",
-    title: "Wildlife Tours",
-    description: "Jungle safaris, birding trips, nature photography tours, and wildlife learning programs.",
-    image: heroCamping,
-    ageGroup: "All ages",
-  },
-  {
-    id: "school-tours",
-    title: "School Tours",
-    description: "Safe educational tours, leadership activities, nature trails, camps, and curriculum-friendly outdoor modules.",
-    image: heroKids,
+  "school-tours": {
     ageGroup: "School groups",
+    description: "School tours include educational trips, adventure camps, outdoor learning modules, leadership activities, safety-first logistics and teacher-friendly coordination.",
   },
-  {
-    id: "corporate-tours",
-    title: "Corporate Tours",
-    description: "Team building tours, leadership programs, outbound training, retreats, and customised corporate offsites.",
-    image: heroCamping,
+  "corporate-tours": {
     ageGroup: "Corporate teams",
+    description: "Corporate tours are built for team bonding, outbound training, leadership exercises, offsites, reward trips and customised employee engagement experiences.",
   },
-  {
-    id: "customised-packages",
-    title: "Customised Packages",
-    description: "Domestic weekend, Kokan, South India, North India, pilgrimage, Nepal, Bhutan, Bali, and Maldives plans.",
-    image: heroMountains,
+  "group-tours": {
+    ageGroup: "All age groups",
+    description: "Group Tours include fixed departure tours such as Malvan Tarkarli, Suvarnadurga Panhalekaji, Gokarna-Murudeshwar, Hampi-Badami, Ujjain-Omkareshwar and more.",
+  },
+  "fix-departure-tours": {
+    ageGroup: "All age groups",
+    description: "Fix Departure Tours are scheduled, batch-wise trips for travellers who want confirmed dates, clear itineraries, transparent pricing and dependable Explorers coordination.",
+  },
+  "customised-packages": {
     ageGroup: "Private groups",
+    description: "Customised packages cover domestic tours, international tours, honeymoon tours, corporate tours, school tours, family vacations and private group itineraries.",
   },
-  {
-    id: "group-tours",
-    title: "Group Tours / Fix Departures",
-    description: "Scheduled group departures across domestic and international destinations.",
-    image: heroWomen,
-    ageGroup: "All ages",
+  "tours-out-of-maharashtra": {
+    ageGroup: "Families and groups",
+    description: "Tours Out of Maharashtra include curated travel across Kokan, South India, North India, heritage circuits, pilgrimage routes and nature destinations.",
   },
-  {
-    id: "offbeat-tours",
-    title: "Offbeat Tours",
-    description: "Lesser-known routes, hidden destinations, and special interest travel experiences.",
-    image: heroMountains,
-    ageGroup: "All ages",
+  "offbeat-tours": {
+    ageGroup: "Curious travellers",
+    description: "Offbeat Tours focus on lesser-known destinations, hidden trails, unusual landscapes, local experiences and routes beyond standard travel itineraries.",
   },
-];
+  "mountain-run": {
+    ageGroup: "16+ years",
+    description: "Mountain Run events are trail-running experiences in natural terrain, designed for fitness lovers, runners, trekkers and adventure-sport enthusiasts.",
+  },
+};
 
-export const faqs = [
-  {
-    question: "What fitness level is required for treks?",
-    answer: "Each trek has a difficulty and endurance rating. Easy treks require basic fitness, while difficult treks need regular exercise and stamina training at least 2 months prior.",
+export const specialPrograms = programDirectory
+  .filter((program) => program.link.startsWith("/programs/"))
+  .map((program, index) => {
+    const id = program.link.split("/").pop() || `program-${index}`;
+    const details = programDetails[id] || { description: program.subtitle, ageGroup: program.subtitle };
+
+    return {
+      id,
+      title: program.title,
+      description: details.description,
+      image: [heroKids, heroWomen, heroMountains, heroCamping][index % 4],
+      ageGroup: details.ageGroup,
+    };
+  });
+
+export const seasonTabs = {
+  monsoon: {
+    title: "Monsoon Treks & Tours",
+    period: "June to September",
+    intro: "Waterfalls, green valleys, misty ridges, and classic monsoon treks near Pune.",
   },
-  {
-    question: "What should I carry for a trek?",
-    answer: "We provide a detailed checklist after booking. Essentials include trekking shoes, backpack, water bottle, rain gear, warm layers, headlamp, and personal medications.",
+  winter: {
+    title: "Winter Adventure",
+    period: "October to January",
+    intro: "Clear views, fort treks near Pune/Mumbai, camping, and beginner-friendly routes.",
   },
-  {
-    question: "Is it safe for solo travelers?",
-    answer: "Absolutely! Over 60% of our members join solo. Our groups are well-guided, and you'll make lifelong friends on the trail. Safety is our top priority with certified guides and first-aid support.",
+  summer: {
+    title: "Summer Treks & Tours",
+    period: "February to May",
+    intro: "Early morning climbs, offbeat treks Maharashtra, school camps, and cool forest trails.",
   },
-  {
-    question: "What is your cancellation policy?",
-    answer: "Full refund if cancelled 15+ days before. 50% refund for 7-14 days before. No refund within 7 days. You can transfer your booking to another person at no extra cost.",
-  },
-  {
-    question: "Do you provide transportation?",
-    answer: "Most treks include pickup from a common point (usually a city bus stand or railway station). Private transportation can be arranged at additional cost.",
-  },
-  {
-    question: "Are your guides certified?",
-    answer: "Yes! All our trek leaders are certified by recognized mountaineering institutes. They hold first-aid and wilderness rescue certifications. We maintain a 1:10 guide-to-participant ratio.",
-  },
-];
+};

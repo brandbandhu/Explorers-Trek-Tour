@@ -32,7 +32,7 @@ const ProgramsSection = () => {
             >
               <Link
                 to={`/programs/${program.id}`}
-                className="group block relative rounded-2xl overflow-hidden h-72 card-shadow hover:card-shadow-hover transition-all duration-300"
+                className="group relative block h-72 overflow-hidden rounded-lg card-shadow transition-all duration-300 hover:card-shadow-hover"
               >
                 <img
                   src={program.image}

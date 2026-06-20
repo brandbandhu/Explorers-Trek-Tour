@@ -1,307 +1,196 @@
 import { Link, useParams } from "react-router-dom";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import {
-  MapPin,
-  Clock,
-  Users,
-  TrendingUp,
-  IndianRupee,
-  ChevronRight,
-  Check,
-  X as XIcon,
-  Calendar,
-  Compass,
-} from "lucide-react";
+import { Calendar, Check, Clock, Facebook, Mail, MapPin, MessageCircle, Play, Share2, Star, TrendingUp, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
 import Layout from "@/components/Layout";
-import { treks } from "@/data/siteData";
+import { awards, pickupPoints, treks } from "@/data/siteData";
+
+const tabs = ["Photo/Video Gallery", "Overview", "Highlights", "Batches", "Itinerary", "Includes/Excludes", "Offers", "What To Bring", "Things To Know", "Share"];
 
 const TrekDetailPage = () => {
   const { id } = useParams();
-  const trek = treks.find((t) => t.id === id);
-  const [openMonth, setOpenMonth] = useState<string | null>(null);
+  const trek = treks.find((item) => item.id === id);
 
   if (!trek) {
     return (
       <Layout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="font-heading text-2xl font-bold text-foreground mb-4">Trek Not Found</h1>
-            <Link to="/treks"><Button>Browse Treks</Button></Link>
+        <div className="flex min-h-[60vh] items-center justify-center px-4 text-center">
+          <div>
+            <h1 className="font-heading text-3xl font-black">Event Not Found</h1>
+            <Link to="/treks"><Button className="mt-4">Browse Events</Button></Link>
           </div>
         </div>
       </Layout>
     );
   }
 
-  const quickFacts = [
-    { icon: MapPin, label: "Location", value: trek.location },
-    { icon: Clock, label: "Duration", value: trek.duration },
-    { icon: TrendingUp, label: "Difficulty", value: trek.difficulty },
-    { icon: Users, label: "Age Group", value: `${trek.ageGroup} yrs` },
-    { icon: Calendar, label: "Best Months", value: trek.month.join(", ") },
-    { icon: IndianRupee, label: "Starting Price", value: `₹${trek.price.toLocaleString()}` },
-  ];
-
-  const monthNames: Record<string, string> = {
-    Jan: "January",
-    Feb: "February",
-    Mar: "March",
-    Apr: "April",
-    May: "May",
-    Jun: "June",
-    Jul: "July",
-    Aug: "August",
-    Sep: "September",
-    Oct: "October",
-    Nov: "November",
-    Dec: "December",
-  };
-
-  const departuresByMonth = trek.month
-    .filter((m) => m !== "Dec")
-    .map((m) => ({
-    key: m,
-    label: `${monthNames[m] || m}-2026`,
-    items: [
-      { range: `${m} 10 – ${m} 18`, status: "Filling Fast", seats: "7 Seats Left", tone: "fast" },
-      { range: `${m} 19 – ${m} 27`, status: "Seats Left", seats: "11 Seats Left", tone: "left" },
-      { range: `${m} 25 – ${m} 31`, status: "Open", seats: "Open", tone: "open" },
-    ],
-  }));
-
-  const statusTone = {
-    fast: "text-orange-600",
-    left: "text-amber-600",
-    full: "text-red-500",
-    open: "text-emerald-600",
-  } as const;
+  const similar = treks.filter((item) => item.id !== trek.id).slice(0, 3);
 
   return (
     <Layout>
-      <div className="pt-24">
-        <div className="container mx-auto px-4 pb-12">
-          <div className="flex items-center gap-2 text-muted-foreground text-xs mb-4 font-body">
-            <Link to="/" className="hover:text-foreground">Home</Link>
-            <ChevronRight className="w-3 h-3" />
-            <Link to="/treks" className="hover:text-foreground">Treks</Link>
-            <ChevronRight className="w-3 h-3" />
-            <span className="text-foreground">{trek.title}</span>
-          </div>
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-8 space-y-8">
-              <div className="bg-card rounded-3xl border border-border overflow-hidden card-shadow">
-                <div className="relative h-[360px]">
-                  <img src={trek.image} alt={trek.title} className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6">
-                    <Badge className="gradient-highlight text-highlight-foreground font-heading text-xs mb-3">
-                      {trek.difficulty}
-                    </Badge>
-                    <h1 className="mb-2 font-heading text-2xl font-extrabold text-primary-foreground sm:text-3xl md:text-5xl">
-                      {trek.title}
-                    </h1>
-                    <p className="flex items-center gap-2 font-body text-sm text-primary-foreground/80 sm:text-base">
-                      <MapPin className="w-4 h-4" /> {trek.location}
-                    </p>
-                  </div>
-                </div>
-                <div className="grid grid-cols-3 gap-2 bg-background/60 p-3 sm:gap-3 sm:p-4">
-                  {trek.gallery.slice(0, 3).map((img, i) => (
-                    <img
-                      key={i}
-                      src={img}
-                      alt={`${trek.title} gallery ${i + 1}`}
-                      loading="lazy"
-                      className="h-20 w-full rounded-lg object-cover sm:h-24"
-                    />
-                  ))}
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4">
-                {quickFacts.map((fact) => (
-                  <div key={fact.label} className="bg-card rounded-2xl border border-border p-4 card-shadow">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
-                        <fact.icon className="w-5 h-5 text-primary" />
-                      </div>
-                      <div>
-                        <p className="text-xs text-muted-foreground font-body">{fact.label}</p>
-                        <p className="font-heading font-bold text-sm text-foreground">{fact.value}</p>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="bg-card rounded-2xl border border-border p-6 card-shadow">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-9 h-9 rounded-full bg-muted flex items-center justify-center">
-                    <Compass className="w-5 h-5 text-primary" />
-                  </div>
-                  <h2 className="font-heading text-2xl font-bold text-foreground">Overview</h2>
-                </div>
-                <p className="text-muted-foreground font-body leading-relaxed">{trek.overview}</p>
-              </motion.section>
-
-              <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="bg-card rounded-2xl border border-border p-6 card-shadow">
-                <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Highlights</h2>
-                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {trek.highlights.map((h) => (
-                    <li key={h} className="flex items-start gap-3 text-foreground font-body">
-                      <span className="mt-1 w-2 h-2 rounded-full bg-highlight shrink-0" />
-                      {h}
-                    </li>
-                  ))}
-                </ul>
-              </motion.section>
-
-              <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                <div className="bg-card rounded-2xl border border-border p-6 card-shadow">
-                  <div className="rounded-2xl bg-gradient-to-r from-emerald-700 to-teal-500 text-white text-center font-heading font-extrabold tracking-widest py-3 mb-4 flex items-center justify-center gap-2">
-                    <Calendar className="w-5 h-5" />
-                    FIXED DEPARTURES
-                  </div>
-                  <div className="space-y-3">
-                    {departuresByMonth.map((month, idx) => {
-                      const isOpen = openMonth ? openMonth === month.key : idx === 0;
-                      return (
-                        <div key={month.key} className="border border-border rounded-2xl overflow-hidden">
-                          <button
-                            onClick={() => setOpenMonth(isOpen ? null : month.key)}
-                            className={`w-full flex items-center justify-between px-5 py-3 text-left font-heading font-bold ${
-                              isOpen ? "bg-emerald-600 text-white" : "bg-background text-foreground"
-                            }`}
-                          >
-                            <span>{month.label}</span>
-                            <span className="text-sm">{isOpen ? "▲" : "▼"}</span>
-                          </button>
-                          {isOpen && (
-                            <div className="bg-muted/40 p-4 space-y-3">
-                              {month.items.map((item) => (
-                                <div key={item.range} className="flex flex-col gap-1 rounded-lg border border-border bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
-                                  <span className="text-sm font-semibold text-foreground">{item.range}</span>
-                                  <span className={`text-sm font-semibold ${statusTone[item.tone as keyof typeof statusTone]}`}>
-                                    {item.seats} {item.status !== "Open" ? "• " + item.status : ""}
-                                  </span>
-                                </div>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
-                  </div>
-                </div>
-              </motion.section>
-
-              <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="bg-card rounded-2xl border border-border p-6 card-shadow">
-                <h2 className="font-heading text-2xl font-bold text-foreground mb-4">Itinerary</h2>
-                <Accordion type="single" collapsible className="space-y-3">
-                  {trek.itinerary.map((day) => (
-                    <AccordionItem key={day.day} value={`day-${day.day}`} className="bg-background rounded-xl border border-border px-5 card-shadow">
-                      <AccordionTrigger className="font-heading font-semibold text-foreground hover:no-underline">
-                        Day {day.day}: {day.title}
-                      </AccordionTrigger>
-                      <AccordionContent className="text-muted-foreground font-body leading-relaxed">
-                        {day.description}
-                      </AccordionContent>
-                    </AccordionItem>
-                  ))}
-                </Accordion>
-              </motion.section>
-
-              <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="bg-card rounded-2xl p-6 card-shadow border border-border">
-                    <h3 className="font-heading font-bold text-foreground mb-4 flex items-center gap-2">
-                      <Check className="w-5 h-5 text-primary" /> What's Included
-                    </h3>
-                    <ul className="space-y-2">
-                      {trek.includes.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm text-foreground font-body">
-                          <Check className="w-3 h-3 text-primary shrink-0" /> {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div className="bg-card rounded-2xl p-6 card-shadow border border-border">
-                    <h3 className="font-heading font-bold text-foreground mb-4 flex items-center gap-2">
-                      <XIcon className="w-5 h-5 text-destructive" /> What's Excluded
-                    </h3>
-                    <ul className="space-y-2">
-                      {trek.excludes.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground font-body">
-                          <XIcon className="w-3 h-3 text-destructive shrink-0" /> {item}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.section>
-            </div>
-
-            <div className="lg:col-span-4">
-              <div className="sticky top-24 bg-card rounded-2xl p-6 card-shadow border border-border space-y-6">
-                <div>
-                  <div className="flex items-baseline gap-2 mb-1">
-                    <span className="font-heading text-3xl font-extrabold text-primary">₹{trek.price.toLocaleString()}</span>
-                    {trek.originalPrice && (
-                      <span className="text-sm text-muted-foreground line-through">₹{trek.originalPrice.toLocaleString()}</span>
-                    )}
-                  </div>
-                  <p className="text-xs text-muted-foreground font-body">per person (incl. GST)</p>
-                </div>
-
-                {trek.originalPrice && (
-                  <div className="bg-highlight/10 rounded-lg p-3 text-center">
-                    <p className="font-heading text-sm font-bold text-highlight">
-                      Save ₹{(trek.originalPrice - trek.price).toLocaleString()}!
-                    </p>
-                    <p className="text-xs text-muted-foreground">Early bird offer</p>
-                  </div>
-                )}
-
-                <div className="space-y-3 text-sm font-body">
-                  <div className="flex justify-between text-foreground">
-                    <span>Duration</span>
-                    <span className="font-semibold">{trek.duration}</span>
-                  </div>
-                  <div className="flex justify-between text-foreground">
-                    <span>Difficulty</span>
-                    <span className="font-semibold">{trek.difficulty}</span>
-                  </div>
-                  <div className="flex justify-between text-foreground">
-                    <span>Age Group</span>
-                    <span className="font-semibold">{trek.ageGroup} yrs</span>
-                  </div>
-                  <div className="flex justify-between text-foreground">
-                    <span>Available</span>
-                    <span className="font-semibold">{trek.month.join(", ")}</span>
-                  </div>
-                </div>
-
-                <Button className="w-full gradient-highlight text-highlight-foreground font-heading font-bold text-lg rounded-xl py-6">
-                  Book Now
-                </Button>
-
-                <a
-                  href={`https://wa.me/919850504437?text=${encodeURIComponent(`Hi! I'm interested in ${trek.title}`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-center text-sm text-primary font-semibold hover:underline"
-                >
-                  Have questions? Chat on WhatsApp
-                </a>
-              </div>
+      <section className="relative min-h-[46vh] overflow-hidden bg-black md:min-h-[58vh]">
+        <img src={trek.image} alt={trek.title} className="absolute inset-0 h-full w-full object-cover opacity-75" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/20" />
+        <div className="container relative mx-auto flex min-h-[46vh] items-end px-4 py-10 md:min-h-[58vh] md:py-12">
+          <div className="max-w-4xl text-white">
+            <p className="font-heading text-sm font-black uppercase tracking-[0.24em] text-accent">{trek.tourType}</p>
+            <h1 className="mt-3 font-heading text-3xl font-black sm:text-4xl md:text-5xl">{trek.title}</h1>
+            <div className="mt-5 flex flex-wrap gap-3 text-sm font-bold text-white/85">
+              <span className="flex items-center gap-2"><Clock className="h-4 w-4" /> {trek.duration}</span>
+              <span className="flex items-center gap-2"><TrendingUp className="h-4 w-4" /> {trek.difficulty}</span>
+              <span className="flex items-center gap-2"><MapPin className="h-4 w-4" /> {trek.location}</span>
             </div>
           </div>
         </div>
+      </section>
+
+      <nav className="relative z-20 border-y border-border bg-white/95 backdrop-blur md:sticky md:top-[8.35rem]">
+        <div className="container mx-auto flex gap-2 overflow-x-auto px-4 py-3 no-scrollbar">
+          {tabs.map((tab) => (
+            <a key={tab} href={`#${tab.toLowerCase().replaceAll("/", "-").replaceAll(" ", "-")}`} className="whitespace-nowrap rounded-full bg-muted px-4 py-2 text-xs font-black text-muted-foreground hover:bg-primary hover:text-primary-foreground">
+              {tab}
+            </a>
+          ))}
+        </div>
+      </nav>
+
+      <div className="container mx-auto grid gap-8 px-4 py-10 lg:grid-cols-[minmax(0,1fr)_22rem]">
+        <main className="space-y-8">
+          <section id="photo-video-gallery" className="rounded-lg border border-border bg-card p-5 shadow-sm">
+            <div className="grid gap-3 sm:grid-cols-3">
+              {trek.gallery.map((image, index) => (
+                <div key={image} className="relative h-44 overflow-hidden rounded-lg">
+                  <img src={image} alt={`${trek.title} gallery ${index + 1}`} className="h-full w-full object-cover" />
+                  {index === 0 && <span className="absolute inset-0 flex items-center justify-center bg-black/20 text-white"><Play className="h-10 w-10" /></span>}
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="overview" className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black text-foreground">Overview</h2>
+            <p className="mt-4 leading-relaxed text-muted-foreground">{trek.overview}</p>
+          </section>
+
+          <section id="highlights" className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black text-foreground">Highlights</h2>
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              {trek.highlights.map((item) => <div key={item} className="flex gap-3 font-semibold text-foreground"><Check className="h-5 w-5 text-highlight" /> {item}</div>)}
+            </div>
+          </section>
+
+          <section id="batches" className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black text-foreground">Batches</h2>
+            <div className="mt-4 overflow-hidden rounded-lg border border-border">
+              {trek.batches.map((batch) => (
+                <div key={`${batch.label}-${batch.date}`} className="grid gap-3 border-b border-border p-4 last:border-b-0 sm:grid-cols-[1fr_1fr_1fr_auto] sm:items-center">
+                  <strong>{batch.label}</strong>
+                  <span>{batch.date}</span>
+                  <span className="font-heading font-black text-primary">Rs.{batch.price}</span>
+                  <Button size="sm" className="rounded-full gradient-highlight text-highlight-foreground">Book Now</Button>
+                </div>
+              ))}
+            </div>
+            <Button variant="outline" className="mt-4 rounded-lg">View More Batches Month-wise</Button>
+          </section>
+
+          <section id="itinerary" className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black text-foreground">Itinerary</h2>
+            <div className="mt-5 space-y-4">
+              {trek.itinerary.map((day) => (
+                <div key={day.day} className="rounded-lg bg-background p-4">
+                  <div className="font-heading font-black text-primary">Day {day.day}: {day.title}</div>
+                  <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{day.description}</p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          <section id="includes-excludes" className="grid gap-6 md:grid-cols-2">
+            <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
+              <h2 className="font-heading text-xl font-black">Includes</h2>
+              <div className="mt-4 space-y-2">{trek.includes.map((item) => <p key={item} className="flex gap-2 text-sm"><Check className="h-4 w-4 text-highlight" /> {item}</p>)}</div>
+            </div>
+            <div className="rounded-lg border border-border bg-card p-6 shadow-sm">
+              <h2 className="font-heading text-xl font-black">Excludes</h2>
+              <div className="mt-4 space-y-2">{trek.excludes.map((item) => <p key={item} className="flex gap-2 text-sm text-muted-foreground"><X className="h-4 w-4 text-destructive" /> {item}</p>)}</div>
+            </div>
+          </section>
+
+          <section id="offers" className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black">Offers, Video and Social Links</h2>
+            <div className="mt-5 grid gap-4 md:grid-cols-2">
+              <div className="aspect-video overflow-hidden rounded-lg bg-black">
+                <iframe className="h-full w-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Explorers event video" allowFullScreen />
+              </div>
+              <div className="grid gap-3">
+                {["Early Bird", "Group Discount", "Membership Discount", "Repeater Discount"].map((offer) => <div key={offer} className="rounded-lg bg-secondary p-4 font-heading font-black text-primary">{offer}</div>)}
+                <div className="grid grid-cols-2 gap-3">
+                  <Button variant="outline"><MessageCircle className="mr-2 h-4 w-4" /> WhatsApp</Button>
+                  <Button variant="outline"><Facebook className="mr-2 h-4 w-4" /> Facebook</Button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="what-to-bring" className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black">What To Bring / Things To Know</h2>
+            <p className="mt-3 text-muted-foreground">Trekking shoes, rainwear, water bottle, personal medicines, small backpack, ID proof, and weather-appropriate clothing. Follow trek leader instructions throughout the event.</p>
+          </section>
+
+          <section className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black">Similar Treks</h2>
+            <div className="mt-5 grid gap-4 md:grid-cols-3">
+              {similar.map((item) => (
+                <Link key={item.id} to={`/treks/${item.id}`} className="overflow-hidden rounded-lg border border-border">
+                  <img src={item.image} alt={item.title} className="h-32 w-full object-cover" />
+                  <div className="p-3 font-heading text-sm font-black">{item.title}</div>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          <section className="rounded-lg border border-border bg-card p-6 shadow-sm">
+            <h2 className="font-heading text-2xl font-black">Awards Logos</h2>
+            <div className="mt-4 flex flex-wrap gap-2">{awards.slice(0, 8).map((award) => <span key={award} className="rounded-full bg-muted px-3 py-1 text-xs font-black text-primary">{award}</span>)}</div>
+          </section>
+        </main>
+
+        <aside className="space-y-5 lg:sticky lg:top-40 lg:self-start">
+          <div className="rounded-lg border border-border bg-card p-6 shadow-xl">
+            <div className="font-heading text-3xl font-black text-primary">Rs.{trek.price}</div>
+            <p className="text-sm font-semibold text-muted-foreground">per person</p>
+            <Button className="mt-5 w-full rounded-full gradient-highlight text-highlight-foreground">Book Now</Button>
+            <div className="mt-5 space-y-2 text-sm">
+              <p className="flex items-center gap-2"><Calendar className="h-4 w-4 text-primary" /> {trek.duration}</p>
+              <p className="flex items-center gap-2"><Star className="h-4 w-4 text-primary" /> {trek.difficulty}</p>
+            </div>
+          </div>
+
+          <div className="rounded-lg border border-border bg-card p-5 shadow-sm">
+            <h3 className="font-heading font-black">Pickup Location</h3>
+            <div className="mt-3 space-y-2">
+              {pickupPoints.map((point) => <a key={point.name} href={point.map} target="_blank" rel="noopener noreferrer" className="block rounded-md bg-background px-3 py-2 text-sm font-semibold text-primary">{point.name}</a>)}
+            </div>
+          </div>
+
+          <form className="rounded-lg border border-border bg-card p-5 shadow-sm">
+            <h3 className="font-heading font-black">Enquiry Form</h3>
+            <div className="mt-4 space-y-3">
+              <Input placeholder="Name" />
+              <Input placeholder="Phone" />
+              <Input placeholder="Email" />
+              <Textarea placeholder="Message" />
+              <Button className="w-full rounded-full gradient-primary text-primary-foreground">Send Enquiry</Button>
+            </div>
+          </form>
+
+          <div id="share" className="grid grid-cols-2 gap-3">
+            <Button variant="outline"><Mail className="mr-2 h-4 w-4" /> Email</Button>
+            <Button variant="outline"><Share2 className="mr-2 h-4 w-4" /> Share</Button>
+          </div>
+        </aside>
       </div>
     </Layout>
   );

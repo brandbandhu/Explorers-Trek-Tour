@@ -19,7 +19,7 @@ const ContactPage = () => {
 
   return (
     <Layout>
-      <div className="pt-24">
+      <div>
         <div className="container mx-auto px-4 py-10 text-center">
           <span className="inline-flex items-center rounded-full border border-border bg-card px-4 py-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
             Contact Us
@@ -81,11 +81,11 @@ const ContactPage = () => {
             </motion.div>
 
             <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:col-span-5 space-y-6">
-              <div className="bg-card rounded-2xl p-6 card-shadow border border-border">
+              <div className="rounded-lg border border-border bg-card p-6 card-shadow">
                 <h3 className="font-heading text-lg font-bold text-foreground mb-4">Help & Support</h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
                       <Phone className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -94,7 +94,7 @@ const ContactPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
                       <Mail className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -103,7 +103,7 @@ const ContactPage = () => {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
                       <Clock className="w-5 h-5 text-primary" />
                     </div>
                     <div>
@@ -115,10 +115,10 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="bg-card rounded-2xl p-6 card-shadow border border-border">
+              <div className="rounded-lg border border-border bg-card p-6 card-shadow">
                 <h3 className="font-heading text-lg font-bold text-foreground mb-4">Only For Agents (B2B)</h3>
                 <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
                     <Users className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -127,17 +127,17 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="bg-card rounded-2xl p-6 card-shadow border border-border">
+              <div className="rounded-lg border border-border bg-card p-6 card-shadow">
                 <h3 className="font-heading text-lg font-bold text-foreground mb-4">Where to find us</h3>
                 <div className="flex items-start gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <p className="text-sm text-muted-foreground">
                     1692, Bhagyadarshan Building, Shop No 5, Sadashiv Peth, Tilak Road, Pune 411030
                   </p>
                 </div>
-                <div className="rounded-xl overflow-hidden border border-border h-40">
+                <div className="h-40 overflow-hidden rounded-lg border border-border">
                   <iframe
                     src="https://maps.google.com/maps?q=1692%20Bhagyadarshan%20Building%20Shop%20No%205%20Sadashiv%20Peth%20Tilak%20Road%20Pune%20411030&t=&z=15&ie=UTF8&iwloc=&output=embed"
                     width="100%"
@@ -151,16 +151,16 @@ const ContactPage = () => {
                 </div>
               </div>
 
-              <div className="bg-card rounded-2xl p-6 card-shadow border border-border">
+              <div className="rounded-lg border border-border bg-card p-6 card-shadow">
                 <h3 className="font-heading text-lg font-bold text-foreground mb-4">Follow us</h3>
                 <div className="flex items-center gap-3">
-                  <a className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/70" href="#">
+                  <a className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-muted/70" href="#">
                     <Facebook className="w-5 h-5 text-foreground" />
                   </a>
-                  <a className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/70" href="#">
+                  <a className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-muted/70" href="#">
                     <Instagram className="w-5 h-5 text-foreground" />
                   </a>
-                  <a className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-muted/70" href="#">
+                  <a className="flex h-10 w-10 items-center justify-center rounded-lg bg-muted hover:bg-muted/70" href="#">
                     <Youtube className="w-5 h-5 text-foreground" />
                   </a>
                 </div>

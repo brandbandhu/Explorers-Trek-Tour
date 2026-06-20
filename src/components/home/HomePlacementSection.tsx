@@ -34,7 +34,7 @@ const HomePlacementSection = () => {
               </p>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-5 card-shadow">
+            <div className="rounded-lg border border-border bg-card p-5 card-shadow">
               <div className="mb-4 flex items-center gap-2">
                 <Filter className="h-5 w-5 text-primary" />
                 <h3 className="font-heading text-lg font-bold text-foreground">Filter Events</h3>
@@ -88,7 +88,7 @@ const HomePlacementSection = () => {
               ))}
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-5 card-shadow">
+            <div className="rounded-lg border border-border bg-card p-5 card-shadow">
               <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
                   <span className="font-heading text-xs font-semibold uppercase tracking-widest text-accent">
@@ -142,7 +142,7 @@ const HomePlacementSection = () => {
               </div>
             </div>
 
-            <div className="rounded-2xl border border-border bg-card p-5 card-shadow">
+            <div className="rounded-lg border border-border bg-card p-5 card-shadow">
               <p className="mb-3 text-xs font-bold uppercase tracking-widest text-muted-foreground">
                 Camp Category / Tour Category
               </p>
