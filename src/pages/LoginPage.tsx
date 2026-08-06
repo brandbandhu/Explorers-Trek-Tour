@@ -2,10 +2,10 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import heroMountains from "@/assets/hero-mountains.jpg";
-import heroCamping from "@/assets/hero-camping.jpg";
-import heroWomen from "@/assets/hero-women.jpg";
-import heroKids from "@/assets/hero-kids.jpg";
+const heroMountains = "/images/hero-mountains.jpg";
+const heroCamping = "/images/hero-camping.jpg";
+const heroWomen = "/images/hero-women.jpg";
+const heroKids = "/images/kids-camp/tent-1.jpg";
 
 const LoginPage = () => {
   const [tab, setTab] = useState<"login" | "signup">("login");

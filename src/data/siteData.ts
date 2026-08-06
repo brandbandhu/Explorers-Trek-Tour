@@ -1,7 +1,7 @@
-import heroMountains from "@/assets/hero-mountains.jpg";
-import heroCamping from "@/assets/hero-camping.jpg";
-import heroKids from "@/assets/hero-kids.jpg";
-import heroWomen from "@/assets/hero-women.jpg";
+export const heroMountains = "/images/hero-mountains.jpg";
+export const heroCamping = "/images/hero-camping.jpg";
+export const heroKids = "/images/kids-camp/tent-1.jpg";
+export const heroWomen = "/images/hero-women.jpg";
 
 export type TourType = "Weekend Trek" | "Himalayan Trek" | "Camping" | "Tour" | "Wildlife Tour" | "Speciality Tour";
 
@@ -49,13 +49,13 @@ export const brand = {
 
 export const heroSlides = [
   { image: heroMountains, title: "Weekend Treks", subtitle: "Guided Sahyadri escapes from Pune and Mumbai.", link: "/treks?type=Weekend+Trek" },
-  { image: heroKids, title: "Junior Explorers", subtitle: "Safe outdoor learning programs for young adventurers.", link: "/programs/junior-explorers" },
+  { image: "/images/kids-camp/tent-1.jpg", title: "Junior Explorers", subtitle: "Safe outdoor learning & adventure camps for ages 8-16.", link: "/programs/junior-explorers" },
   { image: heroWomen, title: "Lady Explorers", subtitle: "Women-only treks, camps, tours, and friendships.", link: "/programs/lady-explorers" },
   { image: heroMountains, title: "Silver Explorers", subtitle: "Comfortable, carefully paced trips for 40+ explorers.", link: "/programs/silver-explorers" },
   { image: heroCamping, title: "Camping", subtitle: "Lake, forest, and mountain stays under open skies.", link: "/treks?type=Camping" },
   { image: heroWomen, title: "Himalayan Treks", subtitle: "High-altitude journeys led by trained teams.", link: "/treks?type=Himalayan+Trek" },
   { image: heroCamping, title: "Customise Your Tour", subtitle: "Private domestic, international, school, and corporate plans.", link: "/programs/customised-packages" },
-  { image: heroKids, title: "Atlas", subtitle: "Adventure leadership training academy by Explorers.", link: "/atlas" },
+  { image: "/images/kids-camp/archery.jpg", title: "Atlas", subtitle: "Adventure leadership training academy by Explorers.", link: "/atlas" },
   { image: heroMountains, title: "Jungle Safari", subtitle: "Wildlife tours across India's iconic national parks.", link: "/programs/wildlife-tours" },
 ];
 
@@ -71,13 +71,162 @@ export const globalSchedule = [
 
 export const trustStats = [
   { number: "24+", label: "Years Experience", note: "Since 2001", icon: "24+" },
-  { number: "Certified", label: "Maharashtra Tourism", note: "Recognised operator", icon: "MT" },
+  { number: "Certified", label: "Certified by Maharashtra Tourism", note: "Recognised operator", icon: "MT" },
   { number: "100%", label: "Safety Record", note: "Trained leaders", icon: "100" },
   { number: "4.7", label: "Google Rating", note: "5-star reviews", icon: "4.7" },
   { number: "5000+", label: "Treks Completed", note: "Across India", icon: "5K" },
 ];
 
 export const treks: Trek[] = [
+  {
+    id: "junior-explorers-adventure-camp",
+    title: "Junior Explorers Outdoor Leadership & Kids Camp",
+    location: "Lonavala / Panshet, Maharashtra",
+    duration: "3 Days / 2 Nights",
+    difficulty: "Easy",
+    endurance: "Low",
+    ageGroup: "8-16 years",
+    price: 3499,
+    originalPrice: 4200,
+    image: "/images/kids-camp/tent-1.jpg",
+    tag: "Kids Camp Special",
+    reporting: "Pune to Pune",
+    description: "3 days of archery, air rifle shooting, high rope obstacle course, tent pitching, traditional games, and night star gazing.",
+    overview: "Specially designed for children aged 8 to 16, the Junior Explorers Camp is an immersive, screen-free outdoor learning program. Led by certified instructors and child-friendly safety marshals, children develop independence, teamwork, confidence, and survival skills through hands-on adventure activities.",
+    highlights: [
+      "Archery & Air Rifle Target Practice",
+      "Tent Pitching & Outdoor Wilderness Camping",
+      "Elevated High Rope Obstacle Challenge",
+      "Astronomy & Night Sky Star Gazing",
+      "Traditional Indian Games & Team Drills",
+      "100% Certified Safety Leaders & 24/7 Medical First-Aid"
+    ],
+    itinerary: [
+      { day: 1, title: "Pickup, Arrival & Tent Pitching Workshop", description: "Pickup from Pune, arrival at campsite, orientation, group formation, tent pitching hands-on session, evening bonfire & star gazing." },
+      { day: 2, title: "Archery, Rifle Shooting & Rope Course", description: "Morning yoga & breathing drills, archery & air rifle target practice, afternoon high rope obstacle course, traditional games, campfire talent show." },
+      { day: 3, title: "Nature Trail Walk & Certificate Ceremony", description: "Guided morning nature trail, bird watching, knot-tying contest, certificate distribution ceremony, and return transfer to Pune." }
+    ],
+    includes: ["Pune to campsite transfer", "Tent stay & bedding", "All meals (Breakfast, Lunch, High Tea, Dinner)", "All activity equipment & certified instructors", "First aid support & certificate"],
+    excludes: ["Personal purchases", "Insurance"],
+    month: ["May", "Jun", "Oct", "Nov", "Dec"],
+    tourType: "Speciality Tour",
+    gallery: [
+      "/images/kids-camp/tent-1.jpg",
+      "/images/kids-camp/archery.jpg",
+      "/images/kids-camp/rifle-shooting.jpg",
+      "/images/kids-camp/rope-activity.jpg",
+      "/images/kids-camp/star-gazing.jpg",
+      "/images/kids-camp/old-indian-games.jpg",
+      "/images/kids-camp/omkar.jpg",
+      "/images/kids-camp/kids-camp-1.jpg"
+    ],
+    batches: [
+      { label: "Batch 1 (Summer Special)", date: "15 May 2026", price: 3499, seats: "Filling Fast" },
+      { label: "Batch 2 (Summer Special)", date: "22 May 2026", price: 3499, seats: "Open" },
+      { label: "Batch 3 (Monsoon Camp)", date: "12 June 2026", price: 3499, seats: "Open" },
+      { label: "Batch 4 (Diwali Break)", date: "25 October 2026", price: 3499, seats: "Open" },
+      { label: "Batch 5 (Winter Camp)", date: "25 December 2026", price: 3499, seats: "Xmas Special" },
+    ],
+    featured: true,
+  },
+  {
+    id: "velas-turtle-festival",
+    title: "Velas Turtle Festival & Konkan Coastal Tour",
+    location: "Velas & Harihareshwar, Ratnagiri, Maharashtra",
+    duration: "2 Days / 1 Night",
+    difficulty: "Easy",
+    endurance: "Low",
+    ageGroup: "All Age Groups (5-70 years)",
+    price: 2999,
+    originalPrice: 3500,
+    image: "/images/velas-turtle-festival/velas-turtle-5.jpg",
+    tag: "Eco Wildlife Special",
+    reporting: "Pune & Mumbai",
+    description: "Witness tiny Olive Ridley baby turtles hatching & taking their first steps into the Arabian Sea at Velas Beach, along with Harihareshwar temple & Bankot Fort.",
+    overview: "The Velas Turtle Festival is a famous eco-tourism conservation movement in Maharashtra. Every year from February to April, female Olive Ridley turtles lay eggs on Velas beach. Explorers Group takes you to witness the magical moment when baby turtles hatch out of nests and crawl into the turquoise ocean. Includes Bankot Fort visit, Ferry boat ride, authentic Konkani homestay food, Harihareshwar beach & temple visit.",
+    highlights: [
+      "Witness Olive Ridley Turtle Hatchling Release into Ocean",
+      "Scenic Ferry Boat Ride & Beach Exploration",
+      "Historical Bankot Fort Hike & Sea Sunset Views",
+      "Harihareshwar Temple & Pradakshina Route Visit",
+      "Authentic Home-Cooked Konkani Solkadhi & Seafood/Veg Meals",
+      "Stay in Traditional Konkani Village Homestays"
+    ],
+    itinerary: [
+      { day: 1, title: "Pune/Mumbai to Velas Village & Sunset Hatching Release", description: "Early morning pickup from Pune/Mumbai, scenic Konkan drive, arrive at Velas village, traditional Konkani lunch. Afternoon visit to Velas beach for 5 PM turtle hatchling release session, Bankot Fort sunset walk, homestay dinner & bonfire." },
+      { day: 2, title: "Morning Turtle Release, Ferry Ride & Harihareshwar Visit", description: "6:30 AM early morning beach visit for second turtle release session. Breakfast, departure for Bagmandle ferry boat crossing to Harihareshwar. Temple darshan, coastal rock formations walk, lunch, and return journey to Pune/Mumbai by evening." }
+    ],
+    includes: ["Transport Pune/Mumbai to Velas & back", "Ferry boat charges & entry fees", "Homestay accommodation", "1 Breakfast, 2 Lunches, 1 Dinner", "Conservation expert & tour leader", "First aid"],
+    excludes: ["Personal expenses", "Camera fees", "Insurance"],
+    month: ["Feb", "Mar", "Apr"],
+    tourType: "Speciality Tour",
+    gallery: [
+      "/images/velas-turtle-festival/velas-turtle-5.jpg",
+      "/images/velas-turtle-festival/velas-turtle-4.jpg",
+      "/images/velas-turtle-festival/velas-turtle-1.jpg",
+      "/images/velas-turtle-festival/velas-turtle-2.jpg",
+      "/images/velas-turtle-festival/velas-turtle-3.jpg",
+      "/images/velas-turtle-festival/velas-turtle-6.png",
+      "/images/velas-turtle-festival/velas-turtle-7.png",
+      "/images/velas-turtle-festival/velas-turtle-8.jpeg",
+      "/images/velas-turtle-festival/velas-turtle-9.jpeg"
+    ],
+    batches: [
+      { label: "Batch 1 (Hatching Season)", date: "13 February 2027", price: 2999, seats: "Filling Fast" },
+      { label: "Batch 2 (Hatching Season)", date: "27 February 2027", price: 2999, seats: "Open" },
+      { label: "Batch 3 (Peak Hatching)", date: "13 March 2027", price: 2999, seats: "Open" },
+      { label: "Batch 4 (Peak Hatching)", date: "27 March 2027", price: 2999, seats: "Open" },
+      { label: "Batch 5 (Spring Special)", date: "10 April 2027", price: 2999, seats: "Open" }
+    ],
+    featured: true,
+  },
+  {
+    id: "junior-explorers-rappelling-trail",
+    title: "Junior Explorers Waterfall Rappelling & Trail Camp",
+    location: "Sahyadri, Maharashtra",
+    duration: "2 Days / 1 Night",
+    difficulty: "Moderate",
+    endurance: "Medium",
+    ageGroup: "10-16 years",
+    price: 2799,
+    originalPrice: 3300,
+    image: "/images/kids-camp/rappelling-1.jpg",
+    tag: "Adventure Thrill",
+    reporting: "Pune to Pune",
+    description: "Supervised waterfall rappelling, stream crossing, fort trekking, and nature trails designed for young adventurers.",
+    overview: "An empowering outdoor adventure program where kids conquer their fear of heights through safe, professionally supervised waterfall and rock rappelling. Includes nature trails, fort exploration, and outdoor survival skills.",
+    highlights: [
+      "Guided Waterfall & Rock Rappelling",
+      "Sahyadri Fort & Nature Trail Hike",
+      "Night Campfire & Outdoor Storytelling",
+      "Map Reading & Compass Navigation Drills",
+      "Certified Mountain Safety Instructors & 1-on-1 Harness Care"
+    ],
+    itinerary: [
+      { day: 1, title: "Base Camp & Technical Briefing", description: "Travel to Sahyadri base, safety harness fitting, technical briefing, afternoon rock rappelling practice, campsite dinner." },
+      { day: 2, title: "Fort Trail Trek & Dispersal", description: "Early morning trail trek, fort history tour, certificate ceremony, and afternoon return to Pune." }
+    ],
+    includes: ["Transport Pune to base", "Safety gear & certified instructors", "Campsite meals & stay", "First aid & certificate"],
+    excludes: ["Personal expenses", "Insurance"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct"],
+    tourType: "Speciality Tour",
+    gallery: [
+      "/images/kids-camp/rappelling-1.jpg",
+      "/images/kids-camp/rappelling-2.jpg",
+      "/images/kids-camp/trek-1.jpg",
+      "/images/kids-camp/trek-3.jpg",
+      "/images/kids-camp/tent-2.jpg",
+      "/images/kids-camp/trek-7.jpg",
+      "/images/kids-camp/kids-camp-2.jpg"
+    ],
+    batches: [
+      { label: "Batch 1", date: "20 June 2026", price: 2799, seats: "Filling Fast" },
+      { label: "Batch 2", date: "18 July 2026", price: 2799, seats: "Open" },
+      { label: "Batch 3", date: "15 August 2026", price: 2799, seats: "Independence Special" },
+      { label: "Batch 4", date: "12 September 2026", price: 2799, seats: "Open" },
+    ],
+    featured: true,
+  },
   {
     id: "andharban",
     title: "Andharban",
@@ -96,15 +245,27 @@ export const treks: Trek[] = [
     itinerary: [{ day: 1, title: "Pune to Bhira and forest trek", description: "Early pickup from Pune, breakfast en route, guided Andharban trail walk, lunch, descent, and return by late evening." }],
     includes: ["Transport from Pune", "Breakfast and lunch", "Trek leader", "First aid", "Basic expertise charges"],
     excludes: ["Personal expenses", "Insurance", "Anything not mentioned in includes"],
-    month: ["Jun", "Jul", "Aug", "Sep"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct"],
     tourType: "Weekend Trek",
     gallery: [heroMountains, heroWomen, heroCamping],
     batches: [
-      { label: "Batch 1", date: "01 June 2026", price: 1499, seats: "Filling Fast" },
-      { label: "Batch 2", date: "10 June 2026", price: 1499, seats: "Open" },
-      { label: "Batch 3", date: "15 July 2026", price: 1499, seats: "8 seats left" },
-      { label: "Batch 4", date: "25 August 2026", price: 1499, seats: "Open" },
-      { label: "Batch 5", date: "01 January 2027", price: 1499, seats: "Open" },
+      { label: "Batch 1", date: "07 June 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 2", date: "14 June 2026", price: 1499, seats: "Open" },
+      { label: "Batch 3", date: "21 June 2026", price: 1499, seats: "Open" },
+      { label: "Batch 4", date: "28 June 2026", price: 1499, seats: "Open" },
+      { label: "Batch 5", date: "05 July 2026", price: 1499, seats: "8 seats left" },
+      { label: "Batch 6", date: "12 July 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 7", date: "19 July 2026", price: 1499, seats: "Open" },
+      { label: "Batch 8", date: "26 July 2026", price: 1499, seats: "Open" },
+      { label: "Batch 9", date: "02 August 2026", price: 1499, seats: "Open" },
+      { label: "Batch 10", date: "09 August 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 11", date: "15 August 2026", price: 1499, seats: "Independence Special" },
+      { label: "Batch 12", date: "23 August 2026", price: 1499, seats: "Open" },
+      { label: "Batch 13", date: "06 September 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 14", date: "13 September 2026", price: 1499, seats: "Open" },
+      { label: "Batch 15", date: "20 September 2026", price: 1499, seats: "Open" },
+      { label: "Batch 16", date: "27 September 2026", price: 1499, seats: "Open" },
+      { label: "Batch 17", date: "04 October 2026", price: 1499, seats: "Open" },
     ],
     featured: true,
   },
@@ -130,11 +291,22 @@ export const treks: Trek[] = [
     tourType: "Weekend Trek",
     gallery: [heroCamping, heroMountains, heroKids],
     batches: [
-      { label: "Batch 1", date: "01 June 2026", price: 1499 },
-      { label: "Batch 2", date: "10 June 2026", price: 1499 },
-      { label: "Batch 3", date: "15 July 2026", price: 1499 },
-      { label: "Batch 4", date: "25 August 2026", price: 1499 },
-      { label: "Batch 5", date: "01 January 2027", price: 1499 },
+      { label: "Batch 1", date: "06 June 2026", price: 1499, seats: "Open" },
+      { label: "Batch 2", date: "13 June 2026", price: 1499, seats: "Open" },
+      { label: "Batch 3", date: "20 June 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 4", date: "27 June 2026", price: 1499, seats: "Open" },
+      { label: "Batch 5", date: "04 July 2026", price: 1499, seats: "Open" },
+      { label: "Batch 6", date: "11 July 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 7", date: "18 July 2026", price: 1499, seats: "Open" },
+      { label: "Batch 8", date: "25 July 2026", price: 1499, seats: "Open" },
+      { label: "Batch 9", date: "01 August 2026", price: 1499, seats: "Open" },
+      { label: "Batch 10", date: "08 August 2026", price: 1499, seats: "Open" },
+      { label: "Batch 11", date: "15 August 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 12", date: "05 September 2026", price: 1499, seats: "Open" },
+      { label: "Batch 13", date: "12 September 2026", price: 1499, seats: "Filling Fast" },
+      { label: "Batch 14", date: "19 September 2026", price: 1499, seats: "Open" },
+      { label: "Batch 15", date: "26 September 2026", price: 1499, seats: "Open" },
+      { label: "Batch 16", date: "10 October 2026", price: 1499, seats: "Open" },
     ],
     featured: true,
   },
@@ -160,11 +332,133 @@ export const treks: Trek[] = [
     tourType: "Weekend Trek",
     gallery: [heroWomen, heroMountains, heroCamping],
     batches: [
-      { label: "Batch 1", date: "01 June 2026", price: 800 },
-      { label: "Batch 2", date: "10 June 2026", price: 800 },
-      { label: "Batch 3", date: "15 July 2026", price: 800 },
-      { label: "Batch 4", date: "25 August 2026", price: 800 },
-      { label: "Batch 5", date: "01 January 2027", price: 800 },
+      { label: "Batch 1", date: "12 July 2026", price: 800, seats: "Open" },
+      { label: "Batch 2", date: "19 July 2026", price: 800, seats: "Filling Fast" },
+      { label: "Batch 3", date: "26 July 2026", price: 800, seats: "Open" },
+      { label: "Batch 4", date: "09 August 2026", price: 800, seats: "Open" },
+      { label: "Batch 5", date: "16 August 2026", price: 800, seats: "Filling Fast" },
+      { label: "Batch 6", date: "23 August 2026", price: 800, seats: "Open" },
+      { label: "Batch 7", date: "06 September 2026", price: 800, seats: "Filling Fast" },
+      { label: "Batch 8", date: "13 September 2026", price: 800, seats: "Open" },
+      { label: "Batch 9", date: "20 September 2026", price: 800, seats: "Open" },
+    ],
+    featured: true,
+  },
+  {
+    id: "kalsubai-peak",
+    title: "Kalsubai Peak Trek",
+    location: "Bari, Maharashtra",
+    duration: "1 Day / 1 Night",
+    difficulty: "Moderate",
+    endurance: "High",
+    ageGroup: "12-55",
+    price: 1399,
+    image: heroMountains,
+    tag: "Highest Peak",
+    reporting: "Pune / Mumbai",
+    description: "Scale the highest peak of Maharashtra (5400 ft) with iron ladders and panoramic views.",
+    overview: "Kalsubai Peak is Maharashtra's Everest. Experiencing Kalsubai in monsoon green mist or winter sunrise is a proud milestone for every explorer.",
+    highlights: ["Summit Kalsubai (5400 ft)", "Iconic steel ladder climbs", "Temple at summit", "Sunrise or monsoon mist view", "Traditional village meal"],
+    itinerary: [{ day: 1, title: "Base Bari to Summit", description: "Night travel to Bari, early morning climb, summit temple visit, descent, local lunch, and evening return." }],
+    includes: ["Transport Pune/Mumbai", "Breakfast & Lunch", "Safety gear & Guide", "First aid"],
+    excludes: ["Personal expenses", "Insurance"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"],
+    tourType: "Weekend Trek",
+    gallery: [heroMountains, heroCamping, heroWomen],
+    batches: [
+      { label: "Batch 1", date: "13 June 2026", price: 1399, seats: "Open" },
+      { label: "Batch 2", date: "18 July 2026", price: 1399, seats: "Filling Fast" },
+      { label: "Batch 3", date: "15 August 2026", price: 1399, seats: "Open" },
+      { label: "Batch 4", date: "12 September 2026", price: 1399, seats: "Filling Fast" },
+      { label: "Batch 5", date: "17 October 2026", price: 1399, seats: "Open" },
+      { label: "Batch 6", date: "14 November 2026", price: 1399, seats: "Open" },
+      { label: "Batch 7", date: "12 December 2026", price: 1399, seats: "Open" },
+      { label: "Batch 8", date: "31 December 2026", price: 1399, seats: "NYE Night Trek" },
+      { label: "Batch 9", date: "09 January 2027", price: 1399, seats: "Open" },
+      { label: "Batch 10", date: "13 February 2027", price: 1399, seats: "Open" },
+      { label: "Batch 11", date: "13 March 2027", price: 1399, seats: "Night Trek" },
+      { label: "Batch 12", date: "10 April 2027", price: 1399, seats: "Night Trek" },
+      { label: "Batch 13", date: "08 May 2027", price: 1399, seats: "Night Trek" },
+    ],
+    featured: true,
+  },
+  {
+    id: "rajmachi-fort",
+    title: "Rajmachi Fort & Camping",
+    location: "Lonavala, Maharashtra",
+    duration: "2 Days / 1 Night",
+    difficulty: "Easy",
+    endurance: "Medium",
+    ageGroup: "10-60",
+    price: 1799,
+    image: heroCamping,
+    tag: "Monsoon & Fireflies",
+    reporting: "Lonavala / Pune",
+    description: "Explore Twin Forts Shrivardhan and Manoranjan with lush green trails and camping.",
+    overview: "Rajmachi Fort trek is famous for fireflies in early monsoon, green plateau walks, and historical twin forts.",
+    highlights: ["Shrivardhan & Manoranjan forts", "Fireflies trail", "Village homestay / camping", "Bhairavnath temple", "Scenic Kataldhar views"],
+    itinerary: [
+      { day: 1, title: "Lonavala to Udhewadi", description: "Reach Lonavala, trek/jeep to Udhewadi village, sunset walk, village dinner & bonfire." },
+      { day: 2, title: "Twin Forts & Descent", description: "Early climb to Shrivardhan fort, breakfast, explore Manoranjan, descent and return." }
+    ],
+    includes: ["Lonavala transfer", "Homestay / Tents", "Dinner, Breakfast & Lunch", "Trek leader"],
+    excludes: ["Personal expenses", "Insurance"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"],
+    tourType: "Weekend Trek",
+    gallery: [heroCamping, heroMountains, heroKids],
+    batches: [
+      { label: "Batch 1", date: "20 June 2026", price: 1799, seats: "Open" },
+      { label: "Batch 2", date: "25 July 2026", price: 1799, seats: "Filling Fast" },
+      { label: "Batch 3", date: "22 August 2026", price: 1799, seats: "Open" },
+      { label: "Batch 4", date: "19 September 2026", price: 1799, seats: "Filling Fast" },
+      { label: "Batch 5", date: "24 October 2026", price: 1799, seats: "Open" },
+      { label: "Batch 6", date: "21 November 2026", price: 1799, seats: "Open" },
+      { label: "Batch 7", date: "19 December 2026", price: 1799, seats: "Open" },
+      { label: "Batch 8", date: "16 January 2027", price: 1799, seats: "Open" },
+      { label: "Batch 9", date: "20 February 2027", price: 1799, seats: "Open" },
+      { label: "Batch 10", date: "20 March 2027", price: 1799, seats: "Open" },
+      { label: "Batch 11", date: "17 April 2027", price: 1799, seats: "Open" },
+      { label: "Batch 12", date: "15 May 2027", price: 1799, seats: "Open" },
+    ],
+    featured: true,
+  },
+  {
+    id: "harishchandragad",
+    title: "Harishchandragad & Kokankada",
+    location: "Khireshwar, Maharashtra",
+    duration: "2 Days / 1 Night",
+    difficulty: "Moderate",
+    endurance: "High",
+    ageGroup: "14-55",
+    price: 1899,
+    image: heroMountains,
+    tag: "Iconic Sahyadri",
+    reporting: "Pune / Mumbai",
+    description: "Witness the awe-inspiring overhang cliff of Kokankada and ancient Harishchandreshwar temple.",
+    overview: "Harishchandragad is an epic hill fort in Ahmednagar district, world renowned for the concave cliff face of Kokankada.",
+    highlights: ["Vertical Kokankada cliff", "Taramati peak (2nd highest)", "Kedarheshwar cave temple", "Cave / tent stay", "Sunset over clouds"],
+    itinerary: [
+      { day: 1, title: "Base to Plateau", description: "Night drive, reach base, ascend via Khireshwar/Nalichi Bato, reach cave, view sunset at Kokankada." },
+      { day: 2, title: "Taramati Peak & Return", description: "Early climb to Taramati peak, temple visit, breakfast, descent to base, return trip." }
+    ],
+    includes: ["Transport Pune/Mumbai", "Tent/Cave stay", "2 Meals, Breakfast", "Guide & expertise"],
+    excludes: ["Personal expenses", "Insurance"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"],
+    tourType: "Weekend Trek",
+    gallery: [heroMountains, heroWomen, heroCamping],
+    batches: [
+      { label: "Batch 1", date: "27 June 2026", price: 1899, seats: "Open" },
+      { label: "Batch 2", date: "26 July 2026", price: 1899, seats: "Open" },
+      { label: "Batch 3", date: "30 August 2026", price: 1899, seats: "Filling Fast" },
+      { label: "Batch 4", date: "27 September 2026", price: 1899, seats: "Filling Fast" },
+      { label: "Batch 5", date: "31 October 2026", price: 1899, seats: "Open" },
+      { label: "Batch 6", date: "22 November 2026", price: 1899, seats: "Open" },
+      { label: "Batch 7", date: "20 December 2026", price: 1899, seats: "Open" },
+      { label: "Batch 8", date: "17 January 2027", price: 1899, seats: "Open" },
+      { label: "Batch 9", date: "21 February 2027", price: 1899, seats: "Open" },
+      { label: "Batch 10", date: "21 March 2027", price: 1899, seats: "Open" },
+      { label: "Batch 11", date: "18 April 2027", price: 1899, seats: "Open" },
+      { label: "Batch 12", date: "23 May 2027", price: 1899, seats: "Open" },
     ],
     featured: true,
   },
@@ -186,19 +480,32 @@ export const treks: Trek[] = [
     itinerary: [{ day: 1, title: "Camp check-in", description: "Evening check-in, games, BBQ-style dinner, bonfire, tent stay, breakfast, and checkout." }],
     includes: ["Tent stay", "Dinner", "Breakfast", "Bonfire", "Camp coordinator"],
     excludes: ["Travel", "Extra activities", "Personal purchases"],
-    month: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr", "May"],
     tourType: "Camping",
     gallery: [heroCamping, heroKids, heroMountains],
     batches: [
-      { label: "Batch 1", date: "25 August 2026", price: 1299 },
-      { label: "Batch 2", date: "12 September 2026", price: 1299 },
-      { label: "Batch 3", date: "01 January 2027", price: 1299 },
+      { label: "Batch 1", date: "25 August 2026", price: 1299, seats: "Open" },
+      { label: "Batch 2", date: "12 September 2026", price: 1299, seats: "Filling Fast" },
+      { label: "Batch 3", date: "26 September 2026", price: 1299, seats: "Open" },
+      { label: "Batch 4", date: "10 October 2026", price: 1299, seats: "Open" },
+      { label: "Batch 5", date: "24 October 2026", price: 1299, seats: "Diwali Camp" },
+      { label: "Batch 6", date: "07 November 2026", price: 1299, seats: "Open" },
+      { label: "Batch 7", date: "21 November 2026", price: 1299, seats: "Open" },
+      { label: "Batch 8", date: "05 December 2026", price: 1299, seats: "Open" },
+      { label: "Batch 9", date: "19 December 2026", price: 1299, seats: "Open" },
+      { label: "Batch 10", date: "31 December 2026", price: 1299, seats: "NYE Special" },
+      { label: "Batch 11", date: "01 January 2027", price: 1299, seats: "New Year Special" },
+      { label: "Batch 12", date: "16 January 2027", price: 1299, seats: "Open" },
+      { label: "Batch 13", date: "13 February 2027", price: 1299, seats: "Valentine Special" },
+      { label: "Batch 14", date: "13 March 2027", price: 1299, seats: "Open" },
+      { label: "Batch 15", date: "10 April 2027", price: 1299, seats: "Open" },
+      { label: "Batch 16", date: "08 May 2027", price: 1299, seats: "Open" },
     ],
     featured: true,
   },
   {
     id: "kedarkantha",
-    title: "Kedarkantha Trek",
+    title: "Kedarkantha Snow Trek",
     location: "Uttarakhand, Himalaya",
     duration: "6 Days",
     difficulty: "Moderate",
@@ -207,7 +514,7 @@ export const treks: Trek[] = [
     price: 8999,
     originalPrice: 10999,
     image: heroMountains,
-    tag: "Offbeat",
+    tag: "Snow Summit",
     reporting: "Dehradun to Dehradun",
     description: "A snow-season Himalayan summit trek with forest trails and wide mountain views.",
     overview: "A classic winter trek Maharashtra travellers love when graduating from Sahyadri treks Pune to guided Himalayan treks.",
@@ -222,16 +529,191 @@ export const treks: Trek[] = [
     ],
     includes: ["Meals on trek", "Camping equipment", "Trek leaders", "Forest permissions", "First aid"],
     excludes: ["Travel to Dehradun", "Personal gear", "Insurance", "Porter charges"],
-    month: ["Dec", "Jan", "Feb", "Mar"],
+    month: ["Oct", "Nov", "Dec", "Jan", "Feb", "Mar", "Apr"],
     tourType: "Himalayan Trek",
     gallery: [heroMountains, heroWomen, heroCamping],
     batches: [
-      { label: "Batch 1", date: "18 October 2026", price: 8999 },
-      { label: "Batch 2", date: "01 January 2027", price: 8999 },
+      { label: "Batch 1", date: "18 October 2026", price: 8999, seats: "Open" },
+      { label: "Batch 2", date: "25 October 2026", price: 8999, seats: "Open" },
+      { label: "Batch 3", date: "08 November 2026", price: 8999, seats: "Open" },
+      { label: "Batch 4", date: "22 November 2026", price: 8999, seats: "Open" },
+      { label: "Batch 5", date: "06 December 2026", price: 8999, seats: "Snow Batch" },
+      { label: "Batch 6", date: "20 December 2026", price: 8999, seats: "Xmas Special" },
+      { label: "Batch 7", date: "25 December 2026", price: 8999, seats: "Filling Fast" },
+      { label: "Batch 8", date: "30 December 2026", price: 8999, seats: "NYE Snow Summit" },
+      { label: "Batch 9", date: "03 January 2027", price: 8999, seats: "Open" },
+      { label: "Batch 10", date: "15 January 2027", price: 8999, seats: "Open" },
+      { label: "Batch 11", date: "10 February 2027", price: 8999, seats: "Open" },
+      { label: "Batch 12", date: "07 March 2027", price: 8999, seats: "Spring Snow" },
+      { label: "Batch 13", date: "11 April 2027", price: 8999, seats: "Open" },
+    ],
+    featured: true,
+  },
+  {
+    id: "manali-adventure-camp",
+    title: "Manali Wilderness Adventure & Youth Camp",
+    location: "Manali, Himachal Pradesh",
+    duration: "6 Days / 5 Nights",
+    difficulty: "Easy",
+    endurance: "Medium",
+    ageGroup: "10-22 years & Families",
+    price: 8999,
+    originalPrice: 11500,
+    image: "/images/manali-camp/manali-camp-1.jpg",
+    tag: "Himalayan Camp Special",
+    reporting: "Manali to Manali",
+    description: "6 days of Himalayan wilderness camping, Solang valley adventure sports, pine forest trekking, river crossing, and night campfires in Manali.",
+    overview: "Our flagship Manali Wilderness Adventure Camp offers young explorers and families an unforgettable Himalayan outdoor experience. Set amidst alpine pine forests and snow-capped peaks, participants engage in river crossing, rock climbing, high-altitude trekking, stream walks, and survival leadership modules under certified mountaineers.",
+    highlights: [
+      "Authentic Alpine Wilderness Camping in Manali",
+      "Solang Valley Adventure & Snow Trail Walk",
+      "Pine Forest Nature Treks & Stream Crossing",
+      "Rock Climbing, Rappelling & River Crossing Drills",
+      "Bonfire Evenings, Star Gazing & Cultural Night",
+      "24/7 Medical Care, Certified Mountaineering Team & Healthy Meals"
+    ],
+    itinerary: [
+      { day: 1, title: "Report at Manali Base Camp & Acclimatization", description: "Report at Manali camp site, tent allocation, orientation briefing, evening river side acclimatization walk, dinner & bonfire." },
+      { day: 2, title: "Rock Climbing, Rappelling & River Crossing", description: "Morning fitness session, technical rock climbing & rappelling training, river crossing techniques, evening outdoor team games." },
+      { day: 3, title: "Solang Valley & Snow Point Excursion", description: "Full day excursion to Solang Valley, snow trail walk, adventure activities, scenic valley photography, and return to camp." },
+      { day: 4, title: "Pine Forest Wilderness Trek to Jogini Waterfall", description: "Guided trail trek through pine forests to Jogini Waterfalls, Vashisht hot springs visit, outdoor picnic lunch." },
+      { day: 5, title: "High Altitude Ridge Trail & Cultural Night", description: "Ridge trek offering panoramic views of Pir Panjal range, outdoor survival knot workshop, certificate ceremony & camp talent show." },
+      { day: 6, title: "Dispersal & Return Journey", description: "Post breakfast checkout, souvenir shopping in Manali town, and dispersal." }
+    ],
+    includes: ["Manali camp accommodation in alpine tents", "All meals (Breakfast, Lunch, Evening Snacks, Dinner)", "All adventure gear & certified instructors", "Permits, first aid & official certificate"],
+    excludes: ["Travel to Manali", "Personal gear & purchases", "Insurance"],
+    month: ["Apr", "May", "Jun", "Jul", "Oct"],
+    tourType: "Himalayan Trek",
+    gallery: [
+      "/images/manali-camp/manali-camp-1.jpg",
+      "/images/manali-camp/manali-camp-2.jpg",
+      "/images/manali-camp/manali-camp-3.jpg",
+      "/images/manali-camp/manali-camp-4.jpg",
+      "/images/manali-camp/manali-camp-5.jpg",
+      "/images/manali-camp/manali-camp-6.jpg",
+      "/images/manali-camp/manali-camp-7.jpg"
+    ],
+    batches: [
+      { label: "Batch 1 (Summer Camp)", date: "15 May 2026", price: 8999, seats: "Filling Fast" },
+      { label: "Batch 2 (Summer Camp)", date: "25 May 2026", price: 8999, seats: "Open" },
+      { label: "Batch 3 (Monsoon Himalayan)", date: "05 June 2026", price: 8999, seats: "Open" },
+      { label: "Batch 4 (Autumn Camp)", date: "15 October 2026", price: 8999, seats: "Open" }
+    ],
+    featured: true,
+  },
+  {
+    id: "bhrigu-lake-manali",
+    title: "Manali Bhrigu Lake Trek",
+    location: "Manali, Himachal Pradesh",
+    duration: "5 Days",
+    difficulty: "Moderate",
+    endurance: "Medium",
+    ageGroup: "12-60",
+    price: 7499,
+    originalPrice: 9499,
+    image: "/images/manali-camp/manali-camp-3.jpg",
+    tag: "High Alpine Lake",
+    reporting: "Manali to Manali",
+    description: "Trek to the holy alpine lake at 14,000 ft with emerald green meadows.",
+    overview: "Bhrigu Lake is famous for high altitude meadows, snow patches, and sweeping alpine valley views above Manali.",
+    highlights: ["14,000 ft Alpine Lake", "Rola Kholi meadows", "Snow slides & ridge walks", "Panorama of Dhauladhar & Pir Panjal", "Guided by certified mountaineers"],
+    itinerary: [
+      { day: 1, title: "Manali to Gulaba & Rola Kholi", description: "Drive to Gulaba, trek through pine forest to Rola Kholi camp." },
+      { day: 2, title: "Rola Kholi to Bhrigu Lake & Back", description: "Summit push to Bhrigu Lake, sacred lake darshan, return to Rola Kholi." },
+      { day: 3, title: "Rola Kholi to Pandu Ropa", description: "Trek downhill through ridge trails." },
+      { day: 4, title: "Pandu Ropa to Vashisht / Manali", description: "Descend to Vashisht hot springs, hot bath & celebration." },
+      { day: 5, title: "Dispersal from Manali", description: "Post breakfast checkout." }
+    ],
+    includes: ["Meals on trek", "Tents & sleeping bags", "Permits & Guide", "First aid & O2 cylinder"],
+    excludes: ["Travel to Manali", "Personal clothing & gear"],
+    month: ["Jun", "Jul", "Aug", "Sep", "Oct", "May"],
+    tourType: "Himalayan Trek",
+    gallery: [
+      "/images/manali-camp/manali-camp-3.jpg",
+      "/images/manali-camp/manali-camp-4.jpg",
+      "/images/manali-camp/manali-camp-5.jpg",
+      "/images/manali-camp/manali-camp-7.jpg"
+    ],
+    batches: [
+      { label: "Batch 1", date: "10 June 2026", price: 7499, seats: "Open" },
+      { label: "Batch 2", date: "24 June 2026", price: 7499, seats: "Open" },
+      { label: "Batch 3", date: "08 July 2026", price: 7499, seats: "Open" },
+      { label: "Batch 4", date: "22 July 2026", price: 7499, seats: "Open" },
+      { label: "Batch 5", date: "12 August 2026", price: 7499, seats: "Open" },
+      { label: "Batch 6", date: "09 September 2026", price: 7499, seats: "Filling Fast" },
+      { label: "Batch 7", date: "23 September 2026", price: 7499, seats: "Open" },
+      { label: "Batch 8", date: "07 October 2026", price: 7499, seats: "Open" },
+      { label: "Batch 9", date: "12 May 2027", price: 7499, seats: "Open" },
+      { label: "Batch 10", date: "26 May 2027", price: 7499, seats: "Open" },
+    ],
+    featured: true,
+  },
+  {
+    id: "hampta-pass-manali",
+    title: "Hampta Pass - Manali to Spiti",
+    location: "Manali & Spiti, Himachal Pradesh",
+    duration: "5 Days",
+    difficulty: "Moderate",
+    endurance: "High",
+    ageGroup: "14-55",
+    price: 8499,
+    originalPrice: 10499,
+    image: "/images/manali-camp/manali-camp-5.jpg",
+    tag: "Cross-Pass Trek",
+    reporting: "Manali to Manali",
+    description: "Cross from lush green Kullu valley into the stark cold desert of Spiti with Chandratal Lake visit.",
+    overview: "Hampta Pass is India's most dramatic crossover trek, offering contrasting scenery every single day.",
+    highlights: ["Cross 14,000 ft Hampta Pass", "Chandratal Moon Lake visit", "Shea Goru river crossing", "Chika & Balu ka Ghera campsites", "High altitude landscape contrast"],
+    itinerary: [
+      { day: 1, title: "Manali to Jobra & Chika", description: "Drive to Jobra, trek along Rani River to Chika camp." },
+      { day: 2, title: "Chika to Balu Ka Ghera", description: "Gradual incline walk along valley bed." },
+      { day: 3, title: "Balu Ka Ghera to Hampta Pass to Shea Goru", description: "Ascend pass over snow bridges, descend into Spiti valley." },
+      { day: 4, title: "Shea Goru to Chatru & Chandratal Lake", description: "Descend to Chatru, drive to iconic Chandratal Lake." },
+      { day: 5, title: "Chatru to Manali via Atal Tunnel", description: "Drive back to Manali, trip ends." }
+    ],
+    includes: ["Meals on trek", "Camping gear & tents", "Chandratal excursion", "Permits & trek leader"],
+    excludes: ["Travel to Manali", "Personal gear", "Insurance"],
+    month: ["Jun", "Jul", "Aug", "Sep"],
+    tourType: "Himalayan Trek",
+    gallery: [
+      "/images/manali-camp/manali-camp-5.jpg",
+      "/images/manali-camp/manali-camp-2.jpg",
+      "/images/manali-camp/manali-camp-6.jpg",
+      "/images/manali-camp/manali-camp-1.jpg"
+    ],
+    batches: [
+      { label: "Batch 1", date: "15 June 2026", price: 8499, seats: "Filling Fast" },
+      { label: "Batch 2", date: "29 June 2026", price: 8499, seats: "Open" },
+      { label: "Batch 3", date: "13 July 2026", price: 8499, seats: "Open" },
+      { label: "Batch 4", date: "27 July 2026", price: 8499, seats: "Open" },
+      { label: "Batch 5", date: "10 August 2026", price: 8499, seats: "Open" },
+      { label: "Batch 6", date: "24 August 2026", price: 8499, seats: "Open" },
+      { label: "Batch 7", date: "07 September 2026", price: 8499, seats: "Filling Fast" },
+      { label: "Batch 8", date: "21 September 2026", price: 8499, seats: "Open" },
     ],
     featured: true,
   },
 ];
+
+const categorySubtitles: Record<string, string> = {
+  "Weekend Treks": "Guided Sahyadri Fort & Forest Treks",
+  "Junior Explorers": "Specially Designed for aged 8 to 16 years",
+  "Lady Explorers": "Women Special - Treks, Camps & Tours",
+  "Silver Explorers": "Specially Curated for aged 40+ years",
+  "Explorers on Wheels": "Bicycle, Bike & Caravan Expeditions",
+  "Camping": "Lakeside & Mountain Camping Under Open Skies",
+  "Jungle Safari": "Wildlife National Park Safaris Across India",
+  "Himalayan Treks": "High-Altitude Guided Treks & Expeditions",
+  "School Tours": "Safe Educational Outdoor Camps & Trips",
+  "Corporate Tours": "Outbound Team Building & Offsite Trips",
+  "Fix Departure Tours": "Scheduled Group Travel With Fixed Dates",
+  "Customise Tour Packages": "Tailor-Made Domestic & International Plans",
+  "TOURS OUT OF MAHARASHTRA": "Curated Kokan, South & North India Tours",
+  "Offbeat Tours": "Lesser-Known Hidden Trails & Experiences",
+  "Mountain Run": "Trail Running Events in Sahyadri Terrain",
+  "ATLAS Training Academy": "Adventure Leadership Training Program",
+  "Be A Part of Explorers": "Join Our Certified Event Leadership Team",
+};
 
 export const experienceCategories = [
   "Weekend Treks",
@@ -246,15 +728,37 @@ export const experienceCategories = [
   "Corporate Tours",
   "Fix Departure Tours",
   "Customise Tour Packages",
-  "Tours Out of Maharashtra",
+  "TOURS OUT OF MAHARASHTRA",
   "Offbeat Tours",
   "Mountain Run",
   "ATLAS Training Academy",
   "Be A Part of Explorers",
 ].map((name, index) => ({
-  name,
+  name: name.toUpperCase(),
+  rawName: name,
+  subtitle: categorySubtitles[name] || "Curated Outdoor Experience",
   image: [heroMountains, heroKids, heroWomen, heroCamping][index % 4],
-  link: name.includes("ATLAS") ? "/atlas" : name.includes("Weekend") || name.includes("Himalayan") ? "/treks" : "/programs/customised-packages",
+  link: name.includes("ATLAS")
+    ? "/atlas"
+    : name.includes("Weekend") || name.includes("Himalayan") || name.includes("Camping")
+    ? `/treks?type=${encodeURIComponent(name === "Weekend Treks" ? "Weekend Trek" : name === "Himalayan Treks" ? "Himalayan Trek" : "Camping")}`
+    : name.includes("Junior")
+    ? "/programs/junior-explorers"
+    : name.includes("Lady")
+    ? "/programs/lady-explorers"
+    : name.includes("Silver")
+    ? "/programs/silver-explorers"
+    : name.includes("Wheels")
+    ? "/programs/on-wheels"
+    : name.includes("Safari")
+    ? "/programs/wildlife-tours"
+    : name.includes("School")
+    ? "/programs/school-tours"
+    : name.includes("Corporate")
+    ? "/programs/corporate-tours"
+    : name.includes("Group") || name.includes("Fix Departure")
+    ? "/programs/group-tours"
+    : "/programs/customised-packages",
 }));
 
 export const awards = [
@@ -272,11 +776,107 @@ export const awards = [
   "IHC London",
 ];
 
-export const testimonials = [
-  "Professional team, clear communication, and superb safety management.",
-  "Our school tour was handled beautifully from pickup to drop.",
-  "Best trekking group in Maharashtra for beginners and regular trekkers.",
-  "The Lady Explorers batch felt safe, warm, and very well planned.",
+export interface GoogleReview {
+  id: string;
+  name: string;
+  avatar: string;
+  rating: number;
+  time: string;
+  text: string;
+  location?: string;
+}
+
+export const googleReviews: GoogleReview[] = [
+  {
+    id: "rev-1",
+    name: "Amit Deshmukh",
+    avatar: "AD",
+    rating: 5,
+    time: "2 days ago",
+    text: "Explorers Group is hands down the best trekking organization in Maharashtra! Went to Andharban monsoon trek with them. Extremely professional leaders, top safety standards, delicious breakfast & lunch. Highly recommended!",
+    location: "Pune, Maharashtra",
+  },
+  {
+    id: "rev-2",
+    name: "Pooja Kulkarni",
+    avatar: "PK",
+    rating: 5,
+    time: "1 week ago",
+    text: "Joined the Lady Explorers batch for Devkund Waterfall. As a female solo traveller, I felt completely safe, comfortable, and well cared for. The female trek coordinator was amazing. Will definitely book more trips!",
+    location: "Mumbai, Maharashtra",
+  },
+  {
+    id: "rev-3",
+    name: "Dr. Rajesh Verma",
+    avatar: "RV",
+    rating: 5,
+    time: "2 weeks ago",
+    text: "Completed Kedarkantha Winter Trek with Explorers. High altitude safety protocols, certified mountain guides, superb quality tents & sleeping bags. They truly live up to 'The Name of Excellence Since 2001'!",
+    location: "Thane, Maharashtra",
+  },
+  {
+    id: "rev-4",
+    name: "Sneha Patil",
+    avatar: "SP",
+    rating: 5,
+    time: "3 weeks ago",
+    text: "We booked Junior Explorers camp for my 12-year-old son. Outdoor learning, discipline, screen-free games and knot-tying activities transformed his confidence. Thank you Explorers team!",
+    location: "Pimpri-Chinchwad, Pune",
+  },
+  {
+    id: "rev-5",
+    name: "Sanjay Joshi",
+    avatar: "SJ",
+    rating: 5,
+    time: "1 month ago",
+    text: "Attended Silver Explorers South India pilgrimage & heritage tour with my wife. Smooth travel pace, excellent hotels, and thoughtful personal attention throughout the 5 days.",
+    location: "Nagpur, Maharashtra",
+  },
+];
+
+export const socialChannels = [
+  {
+    type: "instagram",
+    name: "Instagram",
+    action: "FOLLOW",
+    link: "https://www.instagram.com/explorers_group/",
+    subtext: "Live updates & trip reels",
+  },
+  {
+    type: "facebook",
+    name: "Facebook",
+    action: "FOLLOW",
+    link: "https://www.facebook.com/Explorers.DareToDiscover/",
+    subtext: "Community photos & events",
+  },
+  {
+    type: "youtube",
+    name: "YouTube",
+    action: "SUBSCRIBE",
+    link: "https://www.youtube.com/channel/UC5ffVZUnp2p2Bi6VqNyMRcw",
+    subtext: "Trek vlogs & documentaries",
+  },
+  {
+    type: "google",
+    name: "Google Reviews",
+    action: "REVIEW",
+    link: "https://www.google.com/search?q=Explorers+Treks+and+Tours+Pune+reviews",
+    subtext: "4.8★ rating (5000+ reviews)",
+  },
+  {
+    type: "whatsapp-group",
+    name: "JOIN OUR WHATSAPP GROUP",
+    action: "JOIN",
+    link: "https://chat.whatsapp.com/ExplorersGroupJoin",
+    subtext: "Get instant trek & tour alerts",
+  },
+  {
+    type: "whatsapp-channel",
+    name: "FOLLOW US ON WHATSAPP CHANNEL",
+    action: "FOLLOW",
+    link: "https://whatsapp.com/channel/ExplorersOfficial",
+    subtext: "Official broadcast updates",
+  },
 ];
 
 export const pickupPoints = [
@@ -340,19 +940,19 @@ export const tourCategoryFilters = [
 const programDetails: Record<string, { description: string; ageGroup: string }> = {
   "junior-explorers": {
     ageGroup: "8-16 years",
-    description: "Junior Explorers programs combine safety, outdoor discipline, nature education, games, trekking basics, camping skills, and confidence-building activities for children.",
+    description: "Specially designed for ages 8 to 16 years with outdoor learning, games, trekking basics, camping skills, and confidence-building activities.",
   },
   "lady-explorers": {
     ageGroup: "Women special",
-    description: "Lady Explorers offers women-only treks, tours, camping batches, monsoon outings, and curated travel experiences with trusted planning and comfortable group support.",
+    description: "Women-only treks, tours, and camping batches with trusted planning, comfort, and friendly group support.",
   },
   "silver-explorers": {
     ageGroup: "40+ years",
-    description: "Silver Explorers is designed for mature travellers who prefer comfortable pacing, thoughtful itineraries, reliable logistics, and nature-rich experiences.",
+    description: "Comfortable, carefully paced trips for 40+ explorers with thoughtful itineraries and reliable logistics.",
   },
   "on-wheels": {
     ageGroup: "All age groups",
-    description: "Explorers on Wheels brings together bicycle rides, bike expeditions, caravan routes, and scenic road journeys with curated halts and support planning.",
+    description: "Bicycle rides, bike expeditions, caravan routes, and scenic road journeys with curated halts and support.",
   },
   "wildlife-tours": {
     ageGroup: "Families and nature lovers",

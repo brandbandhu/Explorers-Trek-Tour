@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { programDirectory, specialPrograms, tourCategoryFilters } from "@/data/siteData";
+import KidsCampGallery from "@/components/kids/KidsCampGallery";
 
 const pageContent = {
   "group-tours": {
@@ -60,14 +61,90 @@ const pageContent = {
     ],
     process: ["Choose program type", "Check age and comfort level", "Pick batch or custom date", "Confirm pickup and payment", "Explore with the right group"],
   },
+  "himalayan-explorers": {
+    eyebrow: "Himalayan Treks",
+    heading: "High-Altitude Himalayan Expeditions & Treks",
+    intro:
+      "Guided Himalayan journeys across Himachal, Uttarakhand, Jammu & Kashmir and Nepal led by certified mountain leaders with safety-first preparation.",
+    enquiryTitle: "Enquire for Himalayan Treks",
+    filters: ["Himalayan Trek", "Snow Trek", "High Altitude Trek", "Summits"],
+    highlights: [
+      "Kedarkantha, Hampta Pass, Kuari Pass & Valley of Flowers",
+      "Certified trek leaders and high-altitude emergency protocols",
+      "Comprehensive fitness guidance and equipment checklists",
+      "Nutritious meals, camping gear, and porter management",
+      "Small batch sizes for personalized care and safety",
+    ],
+    cards: [
+      { title: "Kedarkantha Trek", meta: "Uttarakhand | 6 Days", desc: "Classic winter snow summit trek with pine forests and panoramic mountain views." },
+      { title: "Hampta Pass Trek", meta: "Himachal | 5 Days", desc: "Crossover trek from lush Kullu valley to dramatic desert mountain landscape of Lahaul." },
+      { title: "Kuari Pass Trek", meta: "Uttarakhand | 6 Days", desc: "Spectacular views of Nanda Devi, Dronagiri and snow-capped Himalayan peaks." },
+      { title: "Valley of Flowers", meta: "Uttarakhand | 6 Days", desc: "UNESCO World Heritage floral valley trek with pristine lakes and sacred trails." },
+    ],
+    process: ["Select Himalayan trek", "Get preparation guide", "Attend briefing batch", "Confirm booking", "Conquer the Himalayas"],
+  },
+  "junior-explorers": {
+    eyebrow: "Junior Explorers",
+    heading: "Specially Designed For Aged 8 to 16 Years",
+    intro:
+      "Outdoor learning programs, adventure camps, nature education, team building, camping skills and confidence building for children.",
+    enquiryTitle: "Enroll Junior Explorer",
+    filters: ["Summer Camp", "Winter Camp", "One Day Adventure", "Nature Trail"],
+    highlights: [
+      "Specially designed for children aged 8 to 16 years",
+      "Trained child-friendly instructors and safety instructors",
+      "Outdoor survival skills, tent pitching, and compass navigation",
+      "Screen-free interactive activities, games and teamwork",
+    ],
+    cards: [
+      { title: "Junior Sahyadri Camp", meta: "8-16 years | 2 Days", desc: "Tent stays, star-gazing, knot-tying and nature trails built for kids." },
+      { title: "Adventure Leadership Camp", meta: "10-16 years | 3 Days", desc: "Rappelling, obstacle courses, team games and leadership modules." },
+    ],
+    process: ["Select age program", "Review safety guidelines", "Share child details", "Confirm booking", "Empower young adventurers"],
+  },
+  "silver-explorers": {
+    eyebrow: "Silver Explorers",
+    heading: "Comfortable Journeys Curated For Aged 40+ Years",
+    intro:
+      "Carefully paced treks, stays, pilgrimage tours and nature escapes designed around comfort, health, leisure and camaraderie.",
+    enquiryTitle: "Plan Silver Explorers Trip",
+    filters: ["Gentle Treks", "Heritage Tours", "Nature Stays", "Pilgrimage"],
+    highlights: [
+      "Curated specifically for travellers aged 40+ years",
+      "Gradual pacing, comfortable hotel stays and delicious local food",
+      "Dedicated tour managers and medical first-aid assistance",
+    ],
+    cards: [
+      { title: "Silver Heritage Trail", meta: "40+ years | 3 Days", desc: "Easy walks, cultural exploration and relaxed evening gatherings." },
+      { title: "Coastal Breeze Retreat", meta: "40+ years | 4 Days", desc: "Beaches, gentle sightseeing and comfortable resort accommodations." },
+    ],
+    process: ["Select destination", "Check comfort level", "Book batch", "Travel with peace of mind"],
+  },
 };
 
 const ProgramPage = () => {
   const { programId } = useParams();
   const program = specialPrograms.find((p) => p.id === programId);
   const [form, setForm] = useState({ name: "", phone: "", category: "One Day Trek", message: "" });
-  const content = pageContent[programId as keyof typeof pageContent];
-  const filters = content?.filters || tourCategoryFilters;
+  const rawContent = pageContent[programId as keyof typeof pageContent];
+  const content = rawContent || {
+    eyebrow: program?.title || "Explorers Program",
+    heading: program?.title || "Curated Explorers Experience",
+    intro: program?.description || "Explore curated outdoor journeys, treks, tours and camps planned by Explorers.",
+    enquiryTitle: `Plan Your ${program?.title || "Trip"}`,
+    filters: tourCategoryFilters,
+    highlights: [
+      "Expert safety management and certified lead instructors",
+      "Tailored itineraries for groups, families, and individuals",
+      "Complete end-to-end support from booking to return",
+    ],
+    cards: [
+      { title: "Fixed Departure Batches", meta: "Scheduled Dates", desc: "Join fixed departure batches with experienced leaders." },
+      { title: "Custom Group Plans", meta: "Private Groups", desc: "Customise dates and itinerary for your private group." },
+    ],
+    process: ["Select program", "Check batch dates", "Confirm booking", "Explore with Explorers"],
+  };
+  const filters = content.filters || tourCategoryFilters;
 
   const relatedPrograms = useMemo(
     () => programDirectory.filter((item) => !item.link.endsWith(`/${programId}`)).slice(0, 8),
@@ -318,6 +395,13 @@ const ProgramPage = () => {
           </div>
         </div>
       </section>
+
+      {/* Kids Camp Full Gallery for Junior Explorers & Speciality Programs */}
+      {(programId === "junior-explorers" || programId === "lady-explorers" || !programId) && (
+        <section className="bg-muted/30 border-y border-border">
+          <KidsCampGallery showFilter={true} />
+        </section>
+      )}
 
       <section className="section-padding bg-card">
         <div className="container mx-auto">

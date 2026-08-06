@@ -48,6 +48,17 @@ const TrustSection = () => {
               transition={{ delay: i * 0.1 }}
               className="rounded-lg bg-primary-foreground/10 p-6 text-center backdrop-blur-sm"
             >
+              {stat.label === "Certified by Maharashtra Tourism" ? (
+                <img
+                  src="/maharashtra.png"
+                  alt="Maharashtra Tourism"
+                  className="mx-auto mb-3 h-10 w-10 object-contain"
+                />
+              ) : (
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary-foreground/10 text-primary-foreground">
+                  <Award className="h-5 w-5" />
+                </div>
+              )}
               <div className="font-heading text-4xl md:text-5xl font-extrabold text-primary-foreground mb-2">
                 {stat.number}
               </div>
@@ -87,6 +98,7 @@ const TrustSection = () => {
             <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
+                const isGoogleReview = social.label === "Live Google Reviews";
 
                 return (
                   <a
@@ -94,10 +106,21 @@ const TrustSection = () => {
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 rounded-lg border border-border bg-background p-4 transition-colors hover:border-primary/50 hover:text-primary"
+                    className={`rounded-lg border border-border bg-background p-4 transition-colors hover:border-primary/50 hover:text-primary ${
+                      isGoogleReview ? "flex flex-col items-center justify-center gap-2 text-center" : "flex items-center gap-3"
+                    }`}
                   >
-                    <Icon className="h-5 w-5" />
-                    <span className="font-heading text-sm font-bold">{social.label}</span>
+                    {isGoogleReview ? (
+                      <>
+                        <img src="/google-g-logo.svg" alt="Google" className="h-6 w-6 object-contain" />
+                        <span className="font-heading text-sm font-bold leading-tight">{social.label}</span>
+                      </>
+                    ) : (
+                      <>
+                        <Icon className="h-5 w-5" />
+                        <span className="font-heading text-sm font-bold">{social.label}</span>
+                      </>
+                    )}
                   </a>
                 );
               })}

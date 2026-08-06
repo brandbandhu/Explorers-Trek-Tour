@@ -19,11 +19,11 @@ const navLinks = [
     label: "Treks",
     href: "/treks",
     children: [
-      { label: "Monsoon Treks", href: "/treks" },
-      { label: "Winter Treks", href: "/treks" },
-      { label: "Summer Treks", href: "/treks" },
-      { label: "Himalayan Treks", href: "/treks?type=Himalayan+Trek" },
-      { label: "Treks at Glance Calendar", href: "/treks" },
+      { label: "Monsoon Treks", href: "/treks?season=monsoon" },
+      { label: "Winter Treks", href: "/treks?season=winter" },
+      { label: "Summer Treks", href: "/treks?season=summer" },
+      { label: "Himalayan Treks", href: "/treks?season=himalayan" },
+      { label: "Treks at Glance Calendar", href: "/treks?season=all" },
     ],
   },
   {
@@ -68,17 +68,20 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex h-16 items-center justify-between gap-3 px-4 md:h-20">
-        <Link to="/" className="flex min-w-0 items-center">
-          <ExplorersLogo className="h-12 w-44 text-foreground drop-shadow-sm sm:h-14 sm:w-56 md:h-16 md:w-64" />
+        <Link to="/" className="flex shrink-0 flex-col items-start leading-none">
+          <ExplorersLogo className="h-10 w-40 text-foreground drop-shadow-sm sm:h-11 sm:w-48 md:h-12 md:w-56" />
+          <span className="mt-1 text-[0.6rem] font-bold uppercase tracking-[0.2em] text-foreground/80 sm:text-[0.65rem]">
+            The Name of Excellence Since 2001
+          </span>
         </Link>
 
-        <div className="hidden xl:flex flex-1 justify-center px-4">
-          <div className="flex items-center gap-1 rounded-lg border border-border bg-background/90 px-2 py-1 shadow-sm backdrop-blur">
+        <div className="hidden xl:flex flex-1 justify-center px-2">
+          <div className="flex items-center gap-0.5 rounded-lg border border-border bg-background/95 px-2 py-1 shadow-sm backdrop-blur">
             {navLinks.map((link) => (
               <Link
                 key={link.label}
                 to={link.href}
-                className="rounded-md px-3 py-2 text-xs font-heading font-bold text-foreground transition-colors hover:bg-muted hover:text-primary"
+                className="rounded-md px-2 py-1.5 text-xs 2xl:text-sm font-heading font-extrabold uppercase tracking-wide text-foreground transition-colors hover:bg-primary/10 hover:text-primary whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -86,12 +89,12 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="hidden lg:flex items-center gap-3">
+        <div className="hidden lg:flex shrink-0 items-center gap-2">
           <Link to="/login">
-            <Button variant="outline" className="rounded-lg px-5">Login</Button>
+            <Button variant="outline" className="rounded-lg px-4 font-bold uppercase tracking-wider text-xs">Login</Button>
           </Link>
           <Link to="/login">
-            <Button className="rounded-lg px-5 gradient-highlight text-highlight-foreground">Sign Up</Button>
+            <Button className="rounded-lg px-4 gradient-highlight font-extrabold uppercase tracking-wider text-xs text-highlight-foreground">Sign Up</Button>
           </Link>
         </div>
 
@@ -107,7 +110,7 @@ const Navbar = () => {
           <SheetContent side="right" className="w-[min(92vw,24rem)] p-0">
             <div className="h-full flex flex-col">
               <SheetHeader className="px-6 pt-6 pb-4 border-b border-border">
-                <SheetTitle className="text-left font-heading text-xl font-extrabold text-foreground">
+                <SheetTitle className="text-left font-heading text-xl font-extrabold uppercase text-foreground">
                   Menu
                 </SheetTitle>
               </SheetHeader>
@@ -117,7 +120,7 @@ const Navbar = () => {
                     <div key={link.label} className="rounded-lg border border-border/60 bg-background">
                       <Link
                         to={link.href}
-                        className="flex items-center justify-between rounded-lg px-4 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-muted/60"
+                        className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-extrabold uppercase tracking-[0.12em] text-foreground transition-colors hover:bg-muted/60"
                       >
                         <span className="font-heading">{link.label}</span>
                         <ChevronRight className="w-4 h-4 text-muted-foreground" />
@@ -128,7 +131,7 @@ const Navbar = () => {
                             <Link
                               key={child.label}
                               to={child.href}
-                              className="block px-6 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                              className="block px-6 py-2 text-xs font-bold uppercase tracking-[0.08em] text-muted-foreground transition-colors hover:text-primary"
                             >
                               {child.label}
                             </Link>
@@ -141,12 +144,12 @@ const Navbar = () => {
               </div>
               <div className="px-6 pb-6 pt-2 border-t border-border">
                 <Link to="/login" className="block mb-3">
-                  <Button variant="outline" className="w-full rounded-lg">
+                  <Button variant="outline" className="w-full rounded-lg font-bold uppercase tracking-wider text-xs">
                     Login / Sign Up
                   </Button>
                 </Link>
                 <Link to="/contact" className="block">
-                  <Button className="w-full rounded-lg gradient-highlight font-semibold text-highlight-foreground">
+                  <Button className="w-full rounded-lg gradient-highlight font-extrabold uppercase tracking-wider text-xs text-highlight-foreground">
                     Contact Us
                   </Button>
                 </Link>

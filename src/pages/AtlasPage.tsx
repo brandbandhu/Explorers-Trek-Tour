@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/Layout";
-import heroKids from "@/assets/hero-kids.jpg";
+const heroKids = "/images/kids-camp/archery.jpg";
 
 const AtlasPage = () => {
   return (
